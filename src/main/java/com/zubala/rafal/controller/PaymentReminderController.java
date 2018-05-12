@@ -13,5 +13,4 @@ public class PaymentReminderController {
 	public String listCustomers(Model model) {
 		return "list-payments";
 	}
-
 }
