@@ -14,6 +14,10 @@
 	
 	<h2>Payment Reminder Manager</h2>
 
+	<p>
+		User: <security:authentication property="principal.username" />, Role(s): <security:authentication property="principal.authorities" />
+	</p>
+
 </body>
 
 </html>
