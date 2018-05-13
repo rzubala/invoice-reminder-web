@@ -23,20 +23,18 @@
 
 	<div>
 		
-		<div id="loginbox" style="margin-top: 50px;"
-			class="mainbox col-md-3 col-md-offset-2 col-sm-6 col-sm-offset-2">
+		<div id="loginbox" style="margin-top: 50px;" class="mainbox col-md-offset-4 col-md-4 col-sm-offset-3 col-sm-6">
 			
 			<div class="panel panel-info">
 
 				<div class="panel-heading">
-					<div class="panel-title">Sign In</div>
+					<div class="panel-title">Payment reminder - Sign In</div>
 				</div>
 
 				<div style="padding-top: 30px" class="panel-body">
 
 					<!-- Login Form -->
-					<form action="${pageContext.request.contextPath}/authenticateUser" 
-						  method="POST" class="form-horizontal">
+					<form action="${pageContext.request.contextPath}/authenticateUser" method="POST" class="form-horizontal">
 
 					    <!-- Place for messages: error, alert etc ... -->
 					    <div class="form-group">
