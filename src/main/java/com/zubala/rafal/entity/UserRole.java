@@ -2,6 +2,7 @@ package com.zubala.rafal.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -15,9 +16,9 @@ public class UserRole {
     @Id
     @GeneratedValue
     private Long id;
-	
-    @ManyToOne
-	@JoinColumn(name="user_id")
+
+	@JoinColumn(name = "user_id", referencedColumnName = "id")
+	@ManyToOne(fetch = FetchType.EAGER)
 	private UserDO user;
 
 	@Column(name="authority")

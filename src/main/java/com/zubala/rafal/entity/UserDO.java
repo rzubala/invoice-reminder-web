@@ -3,6 +3,7 @@ package com.zubala.rafal.entity;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
@@ -19,9 +20,9 @@ public class UserDO {
     private String password;
     private Boolean enabled; 
    
-	@OneToMany(mappedBy="user") 
+	@OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
 	private List<UserRole> roles;
-
+	
     public Long getId() {
         return id;
     }
