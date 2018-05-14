@@ -1,4 +1,4 @@
-package com.zubala.rafal.enity;
+package com.zubala.rafal.entity;
 
 import java.util.Date;
 

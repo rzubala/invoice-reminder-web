@@ -7,6 +7,6 @@ CREATE TABLE `payment` (
   `description` varchar(225) DEFAULT NULL,
   `date` date DEFAULT NULL,
   `user_id` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  CONSTRAINT `FK_USER` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`)
+  PRIMARY KEY (`id`),  
+  CONSTRAINT `FK_PAYMENT_USER` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;

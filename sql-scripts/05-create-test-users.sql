@@ -7,4 +7,4 @@ VALUES (1, 'rafal','{bcrypt}$2a$04$f7IfDXqu7b2fCNHPLkYg5ee4PqanemZas3h.YoaecZzaU
 delete from `authorities`;
 INSERT INTO `authorities` 
 VALUES 
-('rafal','ROLE_USER');
+(1, 1,'ROLE_USER');

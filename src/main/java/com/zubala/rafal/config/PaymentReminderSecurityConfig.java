@@ -9,6 +9,7 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.provisioning.JdbcUserDetailsManager;
 import org.springframework.security.provisioning.UserDetailsManager;
 
@@ -19,9 +20,13 @@ public class PaymentReminderSecurityConfig extends WebSecurityConfigurerAdapter 
 	@Autowired
 	private DataSource securityDataSource;
 	
+    @Autowired
+    private UserDetailsService userDetailsService;
+	
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		auth.jdbcAuthentication().dataSource(securityDataSource);
+		//auth.jdbcAuthentication().dataSource(securityDataSource);
+        auth.userDetailsService(userDetailsService);
 	}
 
 	@Override
@@ -39,7 +44,8 @@ public class PaymentReminderSecurityConfig extends WebSecurityConfigurerAdapter 
 			.and()
 			.exceptionHandling().accessDeniedPage("/access-denied");
 	}
-	
+
+	/*
 	@Bean
 	public UserDetailsManager userDetailsManager() {
 		
@@ -49,4 +55,5 @@ public class PaymentReminderSecurityConfig extends WebSecurityConfigurerAdapter 
 		
 		return jdbcUserDetailsManager; 
 	}
+	*/
 }
