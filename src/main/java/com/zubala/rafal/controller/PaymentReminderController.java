@@ -11,6 +11,12 @@ public class PaymentReminderController {
 
 	@GetMapping("/list")
 	public String listCustomers(Model model) {
+		/*
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();		
+		CustomUser customUser = (CustomUser)authentication.getPrincipal();
+		int userId = customUser.getUserId();
+		model.addAttribute("userId", userId);
+		*/
 		return "list-payments";
 	}
 }
