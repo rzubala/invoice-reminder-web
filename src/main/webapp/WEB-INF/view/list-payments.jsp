@@ -23,13 +23,15 @@
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-xs-12">
-				<div class="panel panel-info">
+				<div class="panel panel-primary">
 					<div class="panel-heading">
 						<h2>Payment Reminder Manager</h2>
 					</div>
+					<!-- 
 					<div class="panel-body">		
 						User: <security:authentication property="principal.username" />, Role(s): <security:authentication property="principal.authorities" />
 					</div>
+					-->
 				</div>
 			</div>
 		</div>
@@ -37,27 +39,32 @@
 
 		<security:authorize access="hasAnyRole('USER')">
 			<div class="row">
-				<div class="col-md-6">
+				<div class="col-md-6">	
+					<div class="panel panel-info">
+  						<div class="panel-heading"><h4>Payments for user: <b><security:authentication property="principal.username"/></b></h4></div>
 		
-					<table class="table table-striped">
-						<thead>
-							<tr>
-								<th scope="col">Name</th>
-								<th scope="col">Description</th>
-								<th scope="col">Date</th>
-							</tr>
-						</thead>
-						<tbody>
-							<c:forEach var="paymentIt" items="${payments}">
+						<table class="table table-striped">
+							<thead>
 								<tr>
-									<td> ${paymentIt.name} </td>
-									<td> ${paymentIt.description} </td>
-									<td> ${paymentIt.dateStr} </td>
+									<th scope="col">Name</th>
+									<th scope="col">Description</th>
+									<th scope="col">Date</th>
+									<th scope="col">Action</th>
 								</tr>
-							</c:forEach>
-						</tbody>
-								
-					</table>
+							</thead>
+							<tbody>
+								<c:forEach var="paymentIt" items="${payments}">
+									<tr>
+										<td>${paymentIt.name}</td>
+										<td>${paymentIt.description}</td>
+										<td>${paymentIt.dateStr}</td>
+										<td></td>
+									</tr>
+								</c:forEach>
+							</tbody>
+									
+						</table>
+					</div>
 				</div>
 			</div>
 		</security:authorize>
