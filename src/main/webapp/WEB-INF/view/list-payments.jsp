@@ -7,41 +7,61 @@
 <html>
 
 <head>
-	<title>List Payments</title>
+	<title>Payments list</title>
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	
+	<!-- Reference Bootstrap files -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>	
+	<script	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 
 <body>
 	
-	<h2>Payment Reminder Manager</h2>
-	<p>
-		User: <security:authentication property="principal.username" />, Role(s): <security:authentication property="principal.authorities" />
-	</p>
-	<p> 
-		${username} - ${userId} 
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="panel panel-info">
+					<div class="panel-heading">
+						<h2>Payment Reminder Manager</h2>
+					</div>
+					<div class="panel-body">		
+						User: <security:authentication property="principal.username" />, Role(s): <security:authentication property="principal.authorities" />
+					</div>
+				</div>
+			</div>
+		</div>
+			
+
 		<security:authorize access="hasAnyRole('USER')">
-		<div>user access</div>
-		</security:authorize>
-	</p>
-
-	<div>	
-		<table>
-			<tr>
-				<th>Name</th>
-				<th>Description</th>
-				<th>Date</th>
-			</tr>
+			<div class="row">
+				<div class="col-md-6">
 		
-			<c:forEach var="paymentIt" items="${payments}">
-				<tr>
-					<td> ${paymentIt.name} </td>
-					<td> ${paymentIt.description} </td>
-					<td> ${paymentIt.dateStr} </td>
-				</tr>
-			</c:forEach>
-					
-		</table>
+					<table class="table table-striped">
+						<thead>
+							<tr>
+								<th scope="col">Name</th>
+								<th scope="col">Description</th>
+								<th scope="col">Date</th>
+							</tr>
+						</thead>
+						<tbody>
+							<c:forEach var="paymentIt" items="${payments}">
+								<tr>
+									<td> ${paymentIt.name} </td>
+									<td> ${paymentIt.description} </td>
+									<td> ${paymentIt.dateStr} </td>
+								</tr>
+							</c:forEach>
+						</tbody>
+								
+					</table>
+				</div>
+			</div>
+		</security:authorize>
 	</div>
-
 
 </body>
 
