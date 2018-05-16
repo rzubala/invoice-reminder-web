@@ -24,7 +24,7 @@
 		<div class="row">
 			<div class="col-xs-12">
 				<div class="panel panel-primary">
-					<div class="panel-heading">
+					<div class="panel-heading" style="text-align: center;">
 						<h2>Payment Reminder Manager</h2>
 					</div>
 					<!-- 

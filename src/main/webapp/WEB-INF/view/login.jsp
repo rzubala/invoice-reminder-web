@@ -22,12 +22,24 @@
 
 	<div>
 		
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-xs-12">
+					<div class="panel panel-primary">
+						<div class="panel-heading" style="text-align: center;">
+							<h2>Payment Reminder Manager</h2>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
 		<div id="loginbox" style="margin-top: 50px;" class="mainbox col-md-offset-4 col-md-4 col-sm-offset-3 col-sm-6">
 			
 			<div class="panel panel-info">
 
 				<div class="panel-heading">
-					<div class="panel-title">Payment reminder - Sign In</div>
+					<div class="panel-title">Sign In</div>
 				</div>
 
 				<div style="padding-top: 30px" class="panel-body">
