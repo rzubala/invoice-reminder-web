@@ -1,5 +1,6 @@
 package com.zubala.rafal.entity;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -11,6 +12,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name="payment")
@@ -28,7 +32,11 @@ public class Payment {
 	private String description;
 	
 	@Column(name="date")
+	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
 	private Date date;
+	
+	@Transient
+	private String dateStr;
 
 	@JoinColumn(name = "user_id", referencedColumnName = "id")
 	@ManyToOne(fetch = FetchType.LAZY)
@@ -83,6 +91,18 @@ public class Payment {
 
 	public void setUser(CustomUser user) {
 		this.user = user;
+	}
+
+	public String getDateStr() {
+		if (date == null) {
+			return "";
+		}
+		SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
+		return dateFormat.format(date);
+	}
+
+	public void setDateStr(String dateStr) {
+		this.dateStr = dateStr;
 	}
 
 	@Override

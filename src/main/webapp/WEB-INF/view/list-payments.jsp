@@ -22,7 +22,26 @@
 		<div>user access</div>
 		</security:authorize>
 	</p>
-	
+
+	<div>	
+		<table>
+			<tr>
+				<th>Name</th>
+				<th>Description</th>
+				<th>Date</th>
+			</tr>
+		
+			<c:forEach var="paymentIt" items="${payments}">
+				<tr>
+					<td> ${paymentIt.name} </td>
+					<td> ${paymentIt.description} </td>
+					<td> ${paymentIt.dateStr} </td>
+				</tr>
+			</c:forEach>
+					
+		</table>
+	</div>
+
 
 </body>
 
