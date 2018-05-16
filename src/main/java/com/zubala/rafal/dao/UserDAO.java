@@ -1,7 +1,7 @@
 package com.zubala.rafal.dao;
 
-import com.zubala.rafal.entity.UserDO;
+import com.zubala.rafal.entity.CustomUser;
 
 public interface UserDAO {
-	 UserDO findByUsername(String username);
+	 CustomUser findByUsername(String username);
 }

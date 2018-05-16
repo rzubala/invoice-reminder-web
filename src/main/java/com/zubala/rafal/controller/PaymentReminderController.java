@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.zubala.rafal.config.UserPrincipal;
-import com.zubala.rafal.entity.UserDO;
+import com.zubala.rafal.entity.CustomUser;
 
 @Controller
 @RequestMapping("/payment")
@@ -17,7 +17,7 @@ public class PaymentReminderController {
 	@GetMapping("/list")
 	public String listCustomers(Model model) {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();		
-		UserDO user = ((UserPrincipal)authentication.getPrincipal()).getUser();
+		CustomUser user = ((UserPrincipal)authentication.getPrincipal()).getUser();
 		
 		model.addAttribute("username", user.getUsername());
 		model.addAttribute("userId", user.getId());

@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
 
 import com.zubala.rafal.config.UserPrincipal;
 import com.zubala.rafal.dao.UserDAO;
-import com.zubala.rafal.entity.UserDO;
+import com.zubala.rafal.entity.CustomUser;
 import com.zubala.rafal.entity.UserRole;
 
 @Service
@@ -25,7 +25,7 @@ public class InternalUserDetailService implements UserDetailsService {
 	private UserDAO userRepository;
 
     @Override public UserPrincipal loadUserByUsername(String username) throws UsernameNotFoundException {
-        UserDO user = userRepository.findByUsername(username);
+        CustomUser user = userRepository.findByUsername(username);
         if (user == null) {
             throw new UsernameNotFoundException("Unknown User");
         }

@@ -8,7 +8,7 @@ import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.zubala.rafal.entity.UserDO;
+import com.zubala.rafal.entity.CustomUser;
 
 @Repository
 public class UserDAOImpl implements UserDAO {
@@ -17,16 +17,16 @@ public class UserDAOImpl implements UserDAO {
 	private SessionFactory sessionFactory;
 
 	@Override
-	public UserDO findByUsername(String username) {
+	public CustomUser findByUsername(String username) {
 		Session currentSession = sessionFactory.getCurrentSession();				
-		Query<UserDO> query = currentSession.createQuery("from UserDO where username = :name", UserDO.class);
+		Query<CustomUser> query = currentSession.createQuery("from CustomUser where username = :name", CustomUser.class);
 		query.setParameter("name", username);
 		query.setMaxResults(1);
-		List<UserDO> users = query.getResultList();
+		List<CustomUser> users = query.getResultList();
 		if (users == null || users.isEmpty()) {
 			return null;
 		}
-		UserDO user = users.get(0);
+		CustomUser user = users.get(0);
 		return user;
 	}
 }

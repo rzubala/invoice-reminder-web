@@ -19,16 +19,16 @@ public class UserRole {
 
 	@JoinColumn(name = "user_id", referencedColumnName = "id")
 	@ManyToOne(fetch = FetchType.EAGER)
-	private UserDO user;
+	private CustomUser user;
 
 	@Column(name="authority")
 	private String role;
 
-	public UserDO getUser() {
+	public CustomUser getUser() {
 		return user;
 	}
 
-	public void setUser(UserDO user) {
+	public void setUser(CustomUser user) {
 		this.user = user;
 	}
 

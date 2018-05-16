@@ -11,7 +11,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="users")
-public class UserDO {
+public class CustomUser {
 
     @Id
     @GeneratedValue
@@ -27,7 +27,7 @@ public class UserDO {
         return id;
     }
 
-    public UserDO setId(Long id) {
+    public CustomUser setId(Long id) {
         this.id = id;
         return this;
     }
@@ -36,7 +36,7 @@ public class UserDO {
         return username;
     }
 
-    public UserDO setUsername(String username) {
+    public CustomUser setUsername(String username) {
         this.username = username;
         return this;
     }
@@ -45,7 +45,7 @@ public class UserDO {
         return password;
     }
 
-    public UserDO setPassword(String password) {
+    public CustomUser setPassword(String password) {
         this.password = password;
         return this;
     }
