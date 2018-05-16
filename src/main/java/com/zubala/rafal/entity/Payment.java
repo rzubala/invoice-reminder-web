@@ -4,9 +4,12 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -26,6 +29,10 @@ public class Payment {
 	
 	@Column(name="date")
 	private Date date;
+
+	@JoinColumn(name = "user_id", referencedColumnName = "id")
+	@ManyToOne(fetch = FetchType.LAZY)
+	private CustomUser user;
 
 	public Payment() {		
 	}	
@@ -68,6 +75,14 @@ public class Payment {
 
 	public void setDate(Date date) {
 		this.date = date;
+	}
+
+	public CustomUser getUser() {
+		return user;
+	}
+
+	public void setUser(CustomUser user) {
+		this.user = user;
 	}
 
 	@Override
