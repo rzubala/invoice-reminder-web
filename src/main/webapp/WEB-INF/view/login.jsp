@@ -2,13 +2,13 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
 
 <!doctype html>
-<html lang="en">
+<html>
 
 <head>
 	
 	<title>Login Page</title>
 	
-	<meta charset="utf-8">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	
 	<link rel="icon" href="${pageContext.request.contextPath}/resources/img/sale-time.ico">
@@ -111,7 +111,14 @@
 			</div>
 		</div>
 	</div>
-	
+
+   	<div class="container-fluid">
+		<div id="address">
+   			Created by: <a href="mailto:rafal@zubala.com">Rafal Zubala</a><br> 
+			Visit me at: <a href="http://rafal.zubala.com">rafal.zubala.com</a>
+		</div>
+	</div>
+
     <footer id="footer">
     	<div class="container-fluid">
         	<p class="text-muted">

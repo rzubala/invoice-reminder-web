@@ -11,3 +11,8 @@ body {
   	font-size: 10px;
 }
 
+#address {
+	margin-top: 50px;
+	text-align: center;
+	font-size: 14px;	
+}
