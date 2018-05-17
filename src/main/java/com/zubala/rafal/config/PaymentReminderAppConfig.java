@@ -44,6 +44,7 @@ public class PaymentReminderAppConfig implements WebMvcConfigurer {
 		
 		viewResolver.setPrefix("/WEB-INF/view/");
 		viewResolver.setSuffix(".jsp");
+		viewResolver.setContentType("text/html;charset=UTF-8");
 		
 		return viewResolver;
 	}

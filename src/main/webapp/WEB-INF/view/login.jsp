@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
 
@@ -35,7 +37,7 @@
 		</div>
 
 		<div class="row">		
-			<div id="loginbox" style="margin-top: 50px;" class="mainbox col-md-offset-4 col-md-4 col-sm-offset-3 col-sm-6">
+			<div style="margin-top: 50px;" class="col-md-offset-4 col-md-4 col-sm-offset-3 col-sm-6">
 				
 				<div class="panel panel-info">
 	
@@ -113,8 +115,8 @@
 	</div>
 
    	<div class="container-fluid">
-		<div id="address">
-   			Created by: <a href="mailto:rafal@zubala.com">Rafal Zubala</a><br> 
+		<div id="address" class="col-md-offset-4 col-md-4 col-sm-offset-3 col-sm-6">
+   			<span style="font-size: 16px;">Created by: </span><a href="mailto:rafal@zubala.com" style="font-size: 16px;">Rafał Zubala</a><br> 
 			Visit me at: <a href="http://rafal.zubala.com">rafal.zubala.com</a>
 		</div>
 	</div>
