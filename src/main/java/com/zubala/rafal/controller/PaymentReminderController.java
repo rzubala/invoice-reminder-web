@@ -34,6 +34,15 @@ public class PaymentReminderController {
 		
 		return "list-payments";
 	}
+
+	@GetMapping("/addPayment")
+	public String showFormForAdd(Model theModel) {		
+		Payment payment = new Payment();
+		
+		theModel.addAttribute("payment", payment);
+		
+		return "payment-form";
+	}
 	
 	private CustomUser getCurrentUser() {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();		

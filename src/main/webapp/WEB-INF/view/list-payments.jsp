@@ -37,13 +37,37 @@
 				</div>
 			</div>
 		</div>
+
+		<div class="row">
+			<div class="col-xs-2 col-xs-offset-10">	
+				<form:form action="${pageContext.request.contextPath}/logout" method="POST">
+					<button style="float: right;" type="submit" class="btn btn-info btn-md">
+			  			<i class="glyphicon glyphicon-log-out"></i> Logout
+					</button>
+				</form:form>
+			</div>
+		</div>	
 	
 		<security:authorize access="hasAnyRole('USER')">
-			<div class="row">
-				<div class="col-md-6">	
+			<div class="row" style="margin-top: 15px;">
+				<div class="col-md-10 col-md-offset-1 col-xs-12 col-s-12">	
 					<div class="panel panel-info">
-  						<div class="panel-heading"><h4>Payments for user: <b><security:authentication property="principal.username"/></b></h4></div>
-		
+  						<div class="panel-heading">
+  							<div class="row">
+	  							<div class="col-xs-9" style="font-size: 16px; padding-top: 8px;">
+	  								Payments for user: <b><security:authentication property="principal.username"/></b>
+  								</div>
+  								<div class="col-xs-3">
+  								<!-- 
+	  								<input style="float: right;" class="btn btn-warning" type="button" value="Add payment" onclick="window.location.href='addPayment'; return false;"/>
+								-->
+	  								<button style="float: right;" type="button" class="btn btn-warning" onclick="window.location.href='addPayment'; return false;">
+	  									<i class="glyphicon glyphicon-plus"></i> Add payment
+	  								</button>
+	  								
+								</div>
+							</div>							
+  						</div>		
 						<table class="table table-striped">
 							<thead>
 								<tr>
