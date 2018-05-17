@@ -11,6 +11,8 @@
 
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<link rel="icon" href="${pageContext.request.contextPath}/resources/img/sale-time.ico">
 	
 	<!-- Reference Bootstrap files -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">	
@@ -25,7 +27,7 @@
 			<div class="col-xs-12">
 				<div class="panel panel-primary">
 					<div class="panel-heading" style="text-align: center;">
-						<h2>Payment Reminder Manager</h2>
+						<div style="font-size:30px;">Pay on time<img src="${pageContext.request.contextPath}/resources/img/sale-time.svg" width="40px" height="40px" style="margin-left: 10px;"></div>
 					</div>
 					<!-- 
 					<div class="panel-body">		
@@ -35,8 +37,7 @@
 				</div>
 			</div>
 		</div>
-			
-
+	
 		<security:authorize access="hasAnyRole('USER')">
 			<div class="row">
 				<div class="col-md-6">	
