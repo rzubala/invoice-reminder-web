@@ -26,4 +26,10 @@ public class PaymentServiceImpl implements PaymentService {
 		}
 		return result;
 	}
+
+	@Override
+	@Transactional
+	public void savePayment(Payment payment) {
+		paymentDAO.savePayment(payment);
+	}
 }

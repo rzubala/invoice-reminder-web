@@ -41,7 +41,7 @@
 	<div id="container-fluid">
 		<h3>Save Payment</h3>
 
-		<form:form action="saveCustomer" modelAttribute="payment" method="POST">
+		<form:form action="savePayment" modelAttribute="payment" method="POST">
 			<form:hidden path="id" />
 			<table>
 				<tbody>

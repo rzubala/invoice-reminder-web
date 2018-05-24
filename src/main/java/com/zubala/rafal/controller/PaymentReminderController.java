@@ -8,6 +8,8 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.zubala.rafal.config.UserPrincipal;
@@ -42,6 +44,13 @@ public class PaymentReminderController {
 		theModel.addAttribute("payment", payment);
 		
 		return "payment-form";
+	}
+
+	@PostMapping("/savePayment")
+	public String savePayment(@ModelAttribute("payment") Payment payment) {	
+		payment.setUser(getCurrentUser());
+		paymentService.savePayment(payment);	
+		return "redirect:/payment/list";
 	}
 	
 	private CustomUser getCurrentUser() {

@@ -28,4 +28,11 @@ public class PaymentDAOImpl implements PaymentDAO {
 		query.setParameter("userId", userId);
 		return query.getResultList();
 	}
+
+	@Override
+	public void savePayment(Payment payment) {
+		Session currentSession = sessionFactory.getCurrentSession();
+		
+		currentSession.saveOrUpdate(payment);
+	}
 }

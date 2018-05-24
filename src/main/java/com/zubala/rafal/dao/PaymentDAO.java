@@ -8,4 +8,5 @@ public interface PaymentDAO {
 
 	List<Payment> retrievePaymentsByUser(Long userId);
 
+	void savePayment(Payment payment);
 }
