@@ -32,7 +32,7 @@ public class Payment {
 	private String description;
 	
 	@Column(name="date")
-	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	private Date date;
 	
 	@Transient

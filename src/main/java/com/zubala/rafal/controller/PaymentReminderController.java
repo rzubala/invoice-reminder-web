@@ -1,13 +1,18 @@
 package com.zubala.rafal.controller;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -52,7 +57,18 @@ public class PaymentReminderController {
 		paymentService.savePayment(payment);	
 		return "redirect:/payment/list";
 	}
+
+	@InitBinder
+	private void dateBinder(WebDataBinder binder) {
+	    SimpleDateFormat dateFormat = new SimpleDateFormat(dateFormat());
+	    CustomDateEditor editor = new CustomDateEditor(dateFormat, true);
+	    binder.registerCustomEditor(Date.class, editor);
+	}
 	
+	private String dateFormat() {
+		return "dd/MM/yyyy";
+	}
+
 	private CustomUser getCurrentUser() {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();		
 		CustomUser user = ((UserPrincipal)authentication.getPrincipal()).getUser();

@@ -95,8 +95,7 @@
 									<div class="input-group-addon">
 										<i class="fa fa-calendar"> </i>
 									</div>
-									<form:input class="form-control" path="name" id="name"
-										name="name" type="text" />
+									<form:input class="form-control" path="name" id="name" name="name" type="text" />
 								</div>
 							</div>
 
@@ -111,8 +110,7 @@
 									<div class="input-group-addon">
 										<i class="fa fa-calendar"> </i>
 									</div>
-									<form:input class="form-control" path="description"
-										id="description" name="description" type="text" />
+									<form:input class="form-control" path="description" id="description" name="description" type="text" />
 								</div>
 							</div>
 
@@ -134,7 +132,7 @@
 
 						<div class="form-group">
 							<div class="col-sm-10 col-sm-offset-2">
-								<input name="_honey" style="display: none" type="text" />
+								<input style="display: none" type="text" />
 								<button class="btn btn-primary " name="submit" type="submit">Save</button>
 							</div>
 						</div>
