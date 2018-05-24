@@ -9,7 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.zubala.rafal.dao.PaymentDAO;
+import com.zubala.rafal.entity.CustomUser;
 import com.zubala.rafal.entity.Payment;
+import com.zubala.rafal.payment.PaymentData;
 
 @Service
 public class PaymentServiceImpl implements PaymentService {
@@ -29,7 +31,7 @@ public class PaymentServiceImpl implements PaymentService {
 
 	@Override
 	@Transactional
-	public void savePayment(Payment payment) {
-		paymentDAO.savePayment(payment);
+	public void savePayment(PaymentData paymentData, CustomUser currentUser) {
+		paymentDAO.savePayment(paymentData, currentUser);
 	}
 }

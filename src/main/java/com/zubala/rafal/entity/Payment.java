@@ -31,7 +31,6 @@ public class Payment {
 	@Column(name="description")
 	private String description;
 	
-	@Column(name="date")
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	private Date date;
 	

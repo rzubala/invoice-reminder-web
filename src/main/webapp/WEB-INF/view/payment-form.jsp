@@ -1,7 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
 
 <!DOCTYPE html>
 <html>
@@ -45,38 +44,6 @@
 		</div>
 	</div>
 
-	<!-- 
-	<div id="container-fluid">
-		<h3>Save Payment</h3>
-
-		<form:form action="savePayment" modelAttribute="payment" method="POST">
-			<form:hidden path="id" />
-			<table>
-				<tbody>
-					<tr>
-						<td><label>Name:</label></td>
-						<td><form:input path="name" /></td>
-					</tr>
-
-					<tr>
-						<td><label>Description:</label></td>
-						<td><form:input path="description" /></td>
-					</tr>
-
-					<tr>
-						<td><label>Date:</label></td>
-						<td><form:input path="date" /></td>
-					</tr>
-
-					<tr>
-						<td><label></label></td>
-						<td><input type="submit" value="Save" class="btn btn-primary" /></td>
-					</tr>
-				</tbody>
-			</table>
-		</form:form>
-		</div>
- -->
 	<div class="bootstrap-iso">
 		<div class="container-fluid">
 			<h3>Save Payment</h3>
@@ -85,6 +52,18 @@
 					<form:form action="savePayment" class="form-horizontal"
 						modelAttribute="payment" method="POST">
 						<form:hidden path="id" />
+						    
+					    <div class="form-group">
+				        	<div class="col-xs-15">
+				            	<div>								
+									<c:if test="${validationError != null}">
+										<div class="alert alert-danger col-xs-offset-1 col-xs-10">
+											${validationError}
+										</div>
+									</c:if>
+					            </div>
+					        </div>
+					    </div>
 
 						<div class="form-group ">
 							<label class="control-label col-sm-2 requiredField" for="name">
@@ -93,7 +72,7 @@
 							<div class="col-sm-10">
 								<div class="input-group">
 									<div class="input-group-addon">
-										<i class="fa fa-calendar"> </i>
+										<i class="fa fa-pencil"> </i>
 									</div>
 									<form:input class="form-control" path="name" id="name" name="name" type="text" />
 								</div>
@@ -108,7 +87,7 @@
 							<div class="col-sm-10">
 								<div class="input-group">
 									<div class="input-group-addon">
-										<i class="fa fa-calendar"> </i>
+										<i class="fa fa-pencil"> </i>
 									</div>
 									<form:input class="form-control" path="description" id="description" name="description" type="text" />
 								</div>
