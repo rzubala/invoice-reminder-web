@@ -17,9 +17,15 @@
 	<link rel="icon" href="${pageContext.request.contextPath}/resources/img/sale-time.ico">
 	
 	<!-- Reference Bootstrap files -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">	
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap.min.css">
+		
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>	
-	<script	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>	
+	<script	src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	<script	src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+	<script	src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap.min.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/js/list-payments.js"></script>
 </head>
 
 <body>
@@ -52,7 +58,7 @@
 	
 		<security:authorize access="hasAnyRole('USER')">
 			<div class="row" style="margin-top: 15px;">
-				<div class="col-md-10 col-md-offset-1 col-xs-12 col-s-12">	
+				<div class="col-md-12 col-xs-12 col-s-12">	
 					<div class="panel panel-info">
   						<div class="panel-heading">
   							<div class="row">
@@ -69,28 +75,34 @@
 	  								
 								</div>
 							</div>							
-  						</div>		
-						<table class="table table-striped">
-							<thead>
-								<tr>
-									<th scope="col">Name</th>
-									<th scope="col">Description</th>
-									<th scope="col">Date</th>
-									<th scope="col">Action</th>
-								</tr>
-							</thead>
-							<tbody>
-								<c:forEach var="paymentIt" items="${payments}">
+  						</div>
+  						<div style="margin-top: 10px;">
+  							<!--
+  							TODO filtering https://datatables.net/examples/plug-ins/range_filtering.html
+  							 -->  						
+  								
+							<table id="payments" class="table table-striped table-bordered" style="width:100%">
+								<thead>
 									<tr>
-										<td>${paymentIt.name}</td>
-										<td>${paymentIt.description}</td>
-										<td>${paymentIt.dateStr}</td>
-										<td></td>
+										<th scope="col">Name</th>
+										<th scope="col">Description</th>
+										<th scope="col">Date</th>
+										<th scope="col">Action</th>
 									</tr>
-								</c:forEach>
-							</tbody>
-									
-						</table>
+								</thead>
+								<tbody>
+									<c:forEach var="paymentIt" items="${payments}">
+										<tr>
+											<td>${paymentIt.name}</td>
+											<td>${paymentIt.description}</td>
+											<td>${paymentIt.dateStr}</td>
+											<td></td>
+										</tr>
+									</c:forEach>
+								</tbody>
+										
+							</table>
+						</div>
 					</div>
 				</div>
 			</div>
