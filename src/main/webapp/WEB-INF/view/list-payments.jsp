@@ -89,18 +89,7 @@
 										<th scope="col">Date</th>
 										<th scope="col">Action</th>
 									</tr>
-								</thead>
-								<tbody>
-									<c:forEach var="paymentIt" items="${payments}">
-										<tr>
-											<td>${paymentIt.name}</td>
-											<td>${paymentIt.description}</td>
-											<td>${paymentIt.dateStr}</td>
-											<td></td>
-										</tr>
-									</c:forEach>
-								</tbody>
-										
+								</thead>								
 							</table>
 						</div>
 					</div>
