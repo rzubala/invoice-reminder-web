@@ -1,6 +1,8 @@
 $(function() {
 	var baseUrl = $('#base_url').text();
-    $('#payments').DataTable(/*{
+    $('#payments').DataTable({
+		"order": []
+	/*{
         "processing": true,
         "serverSide": true,
         "ajax": {
@@ -12,5 +14,6 @@ $(function() {
             { "data": "description" },
             { "data": "dateStr" }
         ],
-    }*/);
+    */
+    });
 });

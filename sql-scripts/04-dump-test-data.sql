@@ -1,6 +1,21 @@
 USE `payment_reminder_db`;
 
 delete from `payment`;
-insert into `payment` (`name`, `description`, `date`, `user_id`) VALUES ('name1', 'description1', '2018-05-14', 1);
-insert into `payment` (`name`, `description`, `date`, `user_id`) VALUES ('name2', 'description2', '2018-05-15', 1);
-insert into `payment` (`name`, `description`, `date`, `user_id`) VALUES ('name3', 'description3', '2018-05-16', 1);
+insert into `payment` (`name`, `description`, `date`, `user_id`, `amount`, `currency`, `paid`) VALUES ('name1', 'description1', '2018-05-14', 1, 122.3, 'PLN', 1);
+insert into `payment` (`name`, `description`, `date`, `user_id`, `amount`, `currency`, `paid`) VALUES ('name2', 'description2', '2018-05-15', 1, 65.45, 'PLN', 0);
+insert into `payment` (`name`, `description`, `date`, `user_id`, `amount`, `currency`, `paid`) VALUES ('name3', 'description3', '2018-05-16', 1, 786.2, 'PLN', 1);
+insert into `payment` (`name`, `description`, `date`, `user_id`, `amount`, `currency`, `paid`) VALUES ('name4', 'description4', '2018-05-14', 1, 432.23, 'PLN', 1);
+insert into `payment` (`name`, `description`, `date`, `user_id`, `amount`, `currency`, `paid`) VALUES ('name5', 'description5', '2018-05-15', 1, 23.45, 'PLN', 0);
+insert into `payment` (`name`, `description`, `date`, `user_id`, `amount`, `currency`, `paid`) VALUES ('name6', 'description6', '2018-06-16', 1, 16.3, 'PLN', 1);
+insert into `payment` (`name`, `description`, `date`, `user_id`, `amount`, `currency`, `paid`) VALUES ('name7', 'description7', '2018-06-17', 1, 1236.3, 'PLN', 0);
+insert into `payment` (`name`, `description`, `date`, `user_id`, `amount`, `currency`, `paid`) VALUES ('name8', 'description8', '2018-06-18', 1, 136.3, 'PLN', 1);
+insert into `payment` (`name`, `description`, `date`, `user_id`, `amount`, `currency`, `paid`) VALUES ('name9', 'description9', '2018-06-19', 1, 36.23, 'PLN', 0);
+insert into `payment` (`name`, `description`, `date`, `user_id`, `amount`, `currency`, `paid`) VALUES ('name11', 'description11', '2018-05-24', 1, 22.3, 'PLN', 1);
+insert into `payment` (`name`, `description`, `date`, `user_id`, `amount`, `currency`, `paid`) VALUES ('name12', 'description12', '2018-05-25', 1, 5.45, 'PLN', 0);
+insert into `payment` (`name`, `description`, `date`, `user_id`, `amount`, `currency`, `paid`) VALUES ('name13', 'description13', '2018-05-26', 1, 86.2, 'PLN', 1);
+insert into `payment` (`name`, `description`, `date`, `user_id`, `amount`, `currency`, `paid`) VALUES ('name14', 'description14', '2018-05-24', 1, 32.23, 'PLN', 1);
+insert into `payment` (`name`, `description`, `date`, `user_id`, `amount`, `currency`, `paid`) VALUES ('name15', 'description15', '2018-05-25', 1, 3.45, 'PLN', 0);
+insert into `payment` (`name`, `description`, `date`, `user_id`, `amount`, `currency`, `paid`) VALUES ('name16', 'description16', '2018-06-26', 1, 6.3, 'PLN', 1);
+insert into `payment` (`name`, `description`, `date`, `user_id`, `amount`, `currency`, `paid`) VALUES ('name17', 'description17', '2018-06-27', 1, 136.3, 'PLN', 0);
+insert into `payment` (`name`, `description`, `date`, `user_id`, `amount`, `currency`, `paid`) VALUES ('name18', 'description18', '2018-06-28', 1, 16.3, 'PLN', 1);
+insert into `payment` (`name`, `description`, `date`, `user_id`, `amount`, `currency`, `paid`) VALUES ('name19', 'description19', '2018-06-29', 1, 6.23, 'PLN', 0);

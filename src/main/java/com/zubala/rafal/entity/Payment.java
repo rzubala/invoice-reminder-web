@@ -38,7 +38,16 @@ public class Payment {
 	
 	@Transient
 	private String dateStr;
-
+	
+	private Double amount;
+	
+	private String currency;
+	
+	private Boolean paid;
+	
+	@Column(name="external_id")
+	private Integer externalId;
+	
 	@JoinColumn(name = "user_id", referencedColumnName = "id")
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JsonIgnore
@@ -110,5 +119,37 @@ public class Payment {
 	@Override
 	public String toString() {
 		return "Payment [id=" + id + ", name=" + name + ", description=" + description + ", date=" + date + "]";
+	}
+
+	public Double getAmount() {
+		return amount;
+	}
+
+	public void setAmount(Double amount) {
+		this.amount = amount;
+	}
+
+	public String getCurrency() {
+		return currency;
+	}
+
+	public void setCurrency(String currency) {
+		this.currency = currency;
+	}
+
+	public Boolean getPaid() {
+		return paid;
+	}
+
+	public void setPaid(Boolean paid) {
+		this.paid = paid;
+	}
+
+	public Integer getExternalId() {
+		return externalId;
+	}
+
+	public void setExternalId(Integer externalId) {
+		this.externalId = externalId;
 	}
 }

@@ -19,6 +19,7 @@
 	<!-- Reference Bootstrap files -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap.min.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/list-payments.css"/> 
 		
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>	
 	<script	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>	
@@ -81,21 +82,30 @@
   							TODO filtering https://datatables.net/examples/plug-ins/range_filtering.html
   							 -->  						
   								
-							<table id="payments" class="table table-striped table-bordered" style="width:100%">
+							<table data-stripe-classes="[]" id="payments" class="table table-striped table-bordered" style="width:100%">
 								<thead>
 									<tr>
 										<th scope="col">Name</th>
 										<th scope="col">Description</th>
 										<th scope="col">Date</th>
-										<th scope="col">Action</th>
+										<th scope="col">Amount</th>
+										<th scope="col">Currency</th>
+										<th scope="col">Action</th>										
 									</tr>
 								</thead>	
-								<tbody>
+								<tbody>									
 									<c:forEach var="paymentIt" items="${payments}">
-										<tr>
+										<c:if test="${paymentIt.paid}">
+											<tr class="paid">
+										</c:if>
+										<c:if test="${not paymentIt.paid}">
+											<tr class="unpaid">
+										</c:if>
 											<td>${paymentIt.name}</td>
 											<td>${paymentIt.description}</td>
 											<td>${paymentIt.dateStr}</td>
+											<td>${paymentIt.amount}</td>
+											<td>${paymentIt.currency}</td>
 											<td></td>
 										</tr>
 									</c:forEach>
@@ -106,7 +116,8 @@
 				</div>
 			</div>
 		</security:authorize>
-
+	</div>
+	
 	<div id="base_url" style="display: none;">${pageContext.request.contextPath}</div>
 
 </body>
