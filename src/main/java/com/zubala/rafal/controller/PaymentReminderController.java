@@ -9,8 +9,6 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -20,12 +18,11 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.zubala.rafal.config.UserPrincipal;
 import com.zubala.rafal.entity.CustomUser;
 import com.zubala.rafal.entity.Payment;
 import com.zubala.rafal.payment.PaymentData;
+import com.zubala.rafal.service.ContextService;
 import com.zubala.rafal.service.PaymentService;
 
 @Controller
@@ -34,10 +31,13 @@ public class PaymentReminderController {
 
 	@Autowired
 	private PaymentService paymentService;
+
+	@Autowired
+	private ContextService context;
 	
 	@GetMapping("/list")
 	public String listCustomers(Model model) {
-		CustomUser user = getCurrentUser();
+		CustomUser user = context.getCurrentUser();
 		
 		model.addAttribute("username", user.getUsername());
 		model.addAttribute("userId", user.getId());
@@ -64,7 +64,7 @@ public class PaymentReminderController {
 			model.addAttribute("validationError", "Fields can not be empty.");
 			return "payment-form";	
 		}
-		paymentService.savePayment(payment, getCurrentUser());	
+		paymentService.savePayment(payment, context.getCurrentUser());	
 		return "redirect:/payment/list";
 	}
 
@@ -80,11 +80,5 @@ public class PaymentReminderController {
 	
 	private String dateFormat() {
 		return "dd/MM/yyyy";
-	}
-
-	private CustomUser getCurrentUser() {
-		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();		
-		CustomUser user = ((UserPrincipal)authentication.getPrincipal()).getUser();
-		return user;
 	}
 }

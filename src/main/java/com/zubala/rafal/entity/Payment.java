@@ -16,6 +16,8 @@ import javax.persistence.Transient;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name="payment")
 public class Payment {
@@ -39,6 +41,7 @@ public class Payment {
 
 	@JoinColumn(name = "user_id", referencedColumnName = "id")
 	@ManyToOne(fetch = FetchType.LAZY)
+	@JsonIgnore
 	private CustomUser user;
 
 	public Payment() {		

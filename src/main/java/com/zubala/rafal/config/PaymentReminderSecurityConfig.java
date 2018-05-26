@@ -24,6 +24,7 @@ public class PaymentReminderSecurityConfig extends WebSecurityConfigurerAdapter 
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
 			.antMatchers("/payment/**").hasRole("USER")
+			.antMatchers("/grid/**").hasRole("USER")
 			.antMatchers("/resources/**").permitAll()
 			.and()
 			.formLogin()
