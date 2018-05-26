@@ -6,7 +6,7 @@ import com.zubala.rafal.entity.Payment;
 
 public class PaymentGrid {
 	
-	private int draw;
+	private Object draw;
 	
 	private int recordsTotal;
 	
@@ -22,11 +22,11 @@ public class PaymentGrid {
 		this.data = data;
 	}
 
-	public int getDraw() {
+	public Object getDraw() {
 		return draw;
 	}
 
-	public void setDraw(int draw) {
+	public void setDraw(Object draw) {
 		this.draw = draw;
 	}
 

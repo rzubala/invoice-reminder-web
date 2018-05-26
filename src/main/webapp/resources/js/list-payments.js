@@ -11,6 +11,14 @@ $(function() {
             { "data": "name" },
             { "data": "description" },
             { "data": "dateStr" }
-        ]
+        ],
+        /*
+        "initComplete": function () {
+            var api = this.api();
+            api.$('td').click( function () {
+                api.search( this.innerHTML ).draw();
+            } );
+        }
+        */
     } );
 });

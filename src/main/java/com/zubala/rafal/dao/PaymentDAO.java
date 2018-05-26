@@ -8,7 +8,7 @@ import com.zubala.rafal.payment.PaymentData;
 
 public interface PaymentDAO {
 
-	List<Payment> retrievePaymentsByUser(Long userId);
+	List<Payment> retrievePaymentsByUser(Long userId, String filter);
 
 	void savePayment(PaymentData paymentData, CustomUser currentUser);
 }

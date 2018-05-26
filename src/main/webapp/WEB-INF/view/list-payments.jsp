@@ -97,14 +97,6 @@
 			</div>
 		</security:authorize>
 
-		<div class="row">
-			<div class="col-xs-12">
-				<div id="my_test">
-				</div>
-			</div>
-		</div>
-	</div>
-	
 	<div id="base_url" style="display: none;">${pageContext.request.contextPath}</div>
 
 </body>

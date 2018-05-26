@@ -20,14 +20,23 @@ public class PaymentDAOImpl implements PaymentDAO {
 	private SessionFactory sessionFactory;
 
 	@Override
-	public List<Payment> retrievePaymentsByUser(Long userId) {
+	public List<Payment> retrievePaymentsByUser(Long userId, String filter) {
 		Session currentSession = sessionFactory.getCurrentSession();				
 		String queryStr = "select p from Payment p "
 				+ " inner join p.user User "				
-				+ " where User.id = :userId"
-				+ " order by p.date ASC ";
+				+ " where User.id = :userId";
+		boolean isFilter = false;
+		if (filter != null && !filter.trim().isEmpty()) {
+			isFilter = true;
+			queryStr += " and (p.name like :name or p.description like :description ) ";
+		}		
+		queryStr += " order by p.date ASC ";
 		TypedQuery<Payment> query = currentSession.createQuery(queryStr, Payment.class);
 		query.setParameter("userId", userId);
+		if (isFilter) {
+			query.setParameter("name", "%" + filter + "%");
+			query.setParameter("description", "%" + filter + "%");
+		}
 		return query.getResultList();
 	}
 

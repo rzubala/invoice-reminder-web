@@ -42,7 +42,7 @@ public class PaymentReminderController {
 		model.addAttribute("username", user.getUsername());
 		model.addAttribute("userId", user.getId());
 		
-		List<Payment> payments = paymentService.retrievePaymentsByUser(user.getId());
+		List<Payment> payments = paymentService.retrievePaymentsByUser(user.getId(), null);
 		model.addAttribute("payments", payments);
 		
 		return "list-payments";

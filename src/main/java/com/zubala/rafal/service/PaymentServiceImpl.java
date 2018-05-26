@@ -21,8 +21,8 @@ public class PaymentServiceImpl implements PaymentService {
 	
 	@Override
 	@Transactional
-	public List<Payment> retrievePaymentsByUser(Long userId) {
-		List<Payment> result = paymentDAO.retrievePaymentsByUser(userId);
+	public List<Payment> retrievePaymentsByUser(Long userId, String filter) {
+		List<Payment> result = paymentDAO.retrievePaymentsByUser(userId, filter);
 		if (result == null) {
 			return new LinkedList<>();
 		}

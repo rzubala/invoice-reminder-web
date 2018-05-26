@@ -7,7 +7,7 @@ import com.zubala.rafal.entity.Payment;
 import com.zubala.rafal.payment.PaymentData;
 
 public interface PaymentService {
-	List<Payment> retrievePaymentsByUser(Long userId);
+	List<Payment> retrievePaymentsByUser(Long userId, String filter);
 
 	void savePayment(PaymentData payment, CustomUser currentUser);
 }
