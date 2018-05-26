@@ -1,6 +1,6 @@
 $(function() {
 	var baseUrl = $('#base_url').text();
-    $('#payments').DataTable( {
+    $('#payments').DataTable(/*{
         "processing": true,
         "serverSide": true,
         "ajax": {
@@ -12,13 +12,5 @@ $(function() {
             { "data": "description" },
             { "data": "dateStr" }
         ],
-        /*
-        "initComplete": function () {
-            var api = this.api();
-            api.$('td').click( function () {
-                api.search( this.innerHTML ).draw();
-            } );
-        }
-        */
-    } );
+    }*/);
 });
