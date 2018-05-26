@@ -22,6 +22,10 @@ public class PaymentData {
 	
 	private String dateStr;
 
+	public PaymentData() {
+		
+	}
+	
 	public int getId() {
 		return id;
 	}
