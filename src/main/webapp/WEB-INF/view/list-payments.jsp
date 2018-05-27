@@ -85,6 +85,7 @@
 							<table data-stripe-classes="[]" id="payments" class="table table-striped table-bordered" style="width:100%">
 								<thead>
 									<tr>
+										<th></th>
 										<th scope="col">Name</th>
 										<th scope="col">Description</th>
 										<th scope="col">Date</th>
@@ -101,6 +102,7 @@
 										<c:if test="${not paymentIt.paid}">
 											<tr class="unpaid">
 										</c:if>
+											<td class=" details-control"></td>
 											<td>${paymentIt.name}</td>
 											<td>${paymentIt.description}</td>
 											<td>${paymentIt.dateStr}</td>
