@@ -13,8 +13,6 @@ public class PaymentData {
 	@Size(min=1, message="is required")	
 	private String name;
 	
-	@NotNull(message="is required")
-	@Size(min=1, message="is required")	
 	private String description;
 	
 	@NotNull(message="is required")
@@ -22,8 +20,15 @@ public class PaymentData {
 	
 	private String dateStr;
 
+	@NotNull(message="is required")
+	private Double amount;
+	
+	@NotNull(message="is required")
+	private String currency;
+	
+	private Boolean paid;
+	
 	public PaymentData() {
-		
 	}
 	
 	public int getId() {
@@ -64,6 +69,30 @@ public class PaymentData {
 
 	public void setDateStr(String dateStr) {
 		this.dateStr = dateStr;
+	}
+
+	public Double getAmount() {
+		return amount;
+	}
+
+	public void setAmount(Double amount) {
+		this.amount = amount;
+	}
+
+	public String getCurrency() {
+		return currency;
+	}
+
+	public void setCurrency(String currency) {
+		this.currency = currency;
+	}
+
+	public Boolean getPaid() {
+		return paid;
+	}
+
+	public void setPaid(Boolean paid) {
+		this.paid = paid;
 	}
 
 }

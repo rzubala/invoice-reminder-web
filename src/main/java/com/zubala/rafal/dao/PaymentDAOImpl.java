@@ -49,6 +49,9 @@ public class PaymentDAOImpl implements PaymentDAO {
 		payment.setDate(paymentData.getDate());
 		payment.setName(paymentData.getName());
 		payment.setDescription(paymentData.getDescription());
+		payment.setAmount(paymentData.getAmount());
+		payment.setCurrency(paymentData.getCurrency());
+		payment.setPaid(paymentData.getPaid());
 		payment.setUser(user);
 		
 		currentSession.saveOrUpdate(payment);

@@ -32,7 +32,11 @@ $(function() {
         ],
     */
     });
-    
+   
+	//temporary hide column
+    var column = table.column(0);
+    column.visible(!column.visible());
+	
     // Add event listener for opening and closing details
     $('#payments').on('click', 'td.details-control', function () {
         var tr = $(this).closest('tr');

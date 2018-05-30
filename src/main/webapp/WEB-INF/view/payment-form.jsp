@@ -17,6 +17,7 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://formden.com/static/cdn/font-awesome/4.4.0/css/font-awesome.min.css" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css" />
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -72,28 +73,54 @@
 							<div class="col-sm-10">
 								<div class="input-group">
 									<div class="input-group-addon">
-										<i class="fa fa-pencil"> </i>
+										<i class="fas fa-edit" style="width:16px;"> </i>
 									</div>
 									<form:input class="form-control" path="name" id="name" name="name" type="text" />
 								</div>
 							</div>
-
 						</div>
 
 						<div class="form-group ">
-							<label class="control-label col-sm-2 requiredField" for="name">
-								Description <span class="asteriskField"> * </span>
+							<label class="control-label col-sm-2 requiredField" for="description">
+								Description
 							</label>
 							<div class="col-sm-10">
 								<div class="input-group">
 									<div class="input-group-addon">
-										<i class="fa fa-pencil"> </i>
+										<i class="fas fa-edit" style="width:16px;"> </i>
 									</div>
 									<form:input class="form-control" path="description" id="description" name="description" type="text" />
 								</div>
 							</div>
-
 						</div>
+					
+					<div class="form-group ">
+							<label class="control-label col-sm-2 requiredField" for="amount">
+								Amount <span class="asteriskField"> * </span>
+							</label>
+							<div class="col-sm-10">
+								<div class="input-group">
+									<div class="input-group-addon">
+										<i class="fas fa-money-bill-alt" style="width:16px;"> </i>
+									</div>
+									<form:input class="form-control" path="amount" id="amount" name="amount" type="number" />
+								</div>
+							</div>
+						</div>
+						
+						<div class="form-group ">
+							<label class="control-label col-sm-2 requiredField" for="name">
+								Currency <span class="asteriskField"> * </span>
+							</label>
+							<div class="col-sm-10">
+								<div class="input-group">
+									<div class="input-group-addon">
+										<i class="fas fa-dollar-sign" style="width:16px;"> </i>
+									</div>
+									<form:input class="form-control" path="currency" id="currency" name="currency" type="text" />
+								</div>
+							</div>
+						</div>						
 
 						<div class="form-group ">
 							<label class="control-label col-sm-2 requiredField" for="date">
@@ -102,7 +129,7 @@
 							<div class="col-sm-10">
 								<div class="input-group">
 									<div class="input-group-addon">
-										<i class="fa fa-calendar"> </i>
+										<i class="fa fa-calendar" style="width:16px;"> </i>
 									</div>
 									<form:input class="form-control" id="date" name="date" path="date" placeholder="DD/MM/YYYY" type="text" />
 								</div>
