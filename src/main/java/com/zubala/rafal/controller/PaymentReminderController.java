@@ -80,13 +80,13 @@ public class PaymentReminderController {
 	@GetMapping("/removePayment")
 	public String deleteCustomer(@RequestParam("paymentId") int id) {
 		paymentService.deletePaymentById(id);
-		return "redirect:/customer/list";
+		return "redirect:/payment/list";
 	}
 
 	@GetMapping("/markPayment")
 	public String markPayment(@RequestParam("paymentId") int id) {
 		paymentService.markPaymentById(id);
-		return "redirect:/customer/list";
+		return "redirect:/payment/list";
 	}
 
 	@InitBinder
