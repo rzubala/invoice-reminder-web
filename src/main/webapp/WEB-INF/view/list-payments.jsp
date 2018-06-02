@@ -99,17 +99,35 @@
 									<c:forEach var="paymentIt" items="${payments}">
 										<c:if test="${paymentIt.paid}">
 											<tr class="paid">
+											<c:set var = "paidTitle" scope = "session" value = "mark as unpaid"/>
+											<c:set var = "paidClass" scope = "session" value = "fas fa-undo"/>
 										</c:if>
 										<c:if test="${not paymentIt.paid}">
 											<tr class="unpaid">
+											<c:set var = "paidTitle" scope = "session" value = "mark as paid"/>
+											<c:set var = "paidClass" scope = "session" value = "far fa-check-circle"/>
 										</c:if>
+											<c:url var="editLink" value="/payment/updatePayment">
+												<c:param name="paymentId" value="${paymentIt.id}" />
+											</c:url>		
+											<c:url var="removeLink" value="/payment/removePayment">
+												<c:param name="paymentId" value="${paymentIt.id}" />
+											</c:url>		
+											<c:url var="markLink" value="/payment/markPayment">
+												<c:param name="paymentId" value="${paymentIt.id}" />
+											</c:url>		
+														
 											<td class=" details-control"></td>
 											<td>${paymentIt.name}</td>
 											<td>${paymentIt.description}</td>
 											<td>${paymentIt.dateStr}</td>
 											<td>${paymentIt.amount}</td>
 											<td>${paymentIt.currency}</td>
-											<td><i class="far fa-edit"></i></td>
+											<td>
+												<a href="${editLink}" class="deco-none"><i class="far fa-edit fa-md" id="icon_action" title="edit"></i></a><span style="display:inline-block; width: 10px;"></span>
+												<a href="${removeLink}" class="deco-none"><i class="far fa-trash-alt fa-md" id="icon_action" title="delete"></i></a><span style="display:inline-block; width: 10px;"></span>
+												<a href="${markLink}" class="deco-none"><i class="${paidClass} fa-md" id="icon_action" title="${paidTitle}"></i></a>
+											</td>
 										</tr>
 									</c:forEach>
 								</tbody>							
