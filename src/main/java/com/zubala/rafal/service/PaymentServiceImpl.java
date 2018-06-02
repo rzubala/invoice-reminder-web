@@ -32,6 +32,57 @@ public class PaymentServiceImpl implements PaymentService {
 	@Override
 	@Transactional
 	public void savePayment(PaymentData paymentData, CustomUser currentUser) {
-		paymentDAO.savePayment(paymentData, currentUser);
+		paymentDAO.savePayment(getPayment(paymentData), currentUser);
+	}
+
+	@Override
+	@Transactional
+	public Payment getPaymentById(int id) {
+		return paymentDAO.retrievePaymentById(id);
+	}
+
+	private Payment getPayment(PaymentData data) {
+		Payment payment = new Payment();
+		if (data == null) {
+			return payment;
+		}
+		payment.setAmount(data.getAmount());
+		payment.setCurrency(data.getCurrency());
+		payment.setDate(data.getDate());
+		payment.setDateStr(data.getDateStr());
+		payment.setDescription(data.getDescription());
+		payment.setId(data.getId());
+		payment.setName(data.getName());
+		payment.setPaid(data.getPaid());
+		return payment;
+	}
+	
+	@Override
+	public PaymentData getPaymentData(Payment payment) {
+		PaymentData data = new PaymentData();
+		if (payment == null) {
+			return data;
+		}
+		data.setAmount(payment.getAmount());
+		data.setCurrency(payment.getCurrency());
+		data.setDate(payment.getDate());
+		data.setDateStr(payment.getDateStr());
+		data.setDescription(payment.getDescription());
+		data.setId(payment.getId());
+		data.setName(payment.getName());
+		data.setPaid(payment.getPaid());
+		return data;
+	}
+
+	@Override
+	@Transactional
+	public void deletePaymentById(int id) {
+		paymentDAO.deletePaymentById(id);
+	}
+
+	@Override
+	@Transactional
+	public void markPaymentById(int id) {
+		paymentDAO.markPaymentById(id);
 	}
 }

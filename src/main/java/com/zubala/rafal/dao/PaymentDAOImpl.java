@@ -11,7 +11,6 @@ import org.springframework.stereotype.Repository;
 
 import com.zubala.rafal.entity.CustomUser;
 import com.zubala.rafal.entity.Payment;
-import com.zubala.rafal.payment.PaymentData;
 
 @Repository
 public class PaymentDAOImpl implements PaymentDAO {
@@ -41,19 +40,50 @@ public class PaymentDAOImpl implements PaymentDAO {
 	}
 
 	@Override
-	public void savePayment(PaymentData paymentData, CustomUser user) {
+	public void savePayment(Payment payment, CustomUser user) {
 		Session currentSession = sessionFactory.getCurrentSession();
-		
-		Payment payment = new Payment();
-		payment.setId(paymentData.getId());
-		payment.setDate(paymentData.getDate());
-		payment.setName(paymentData.getName());
-		payment.setDescription(paymentData.getDescription());
-		payment.setAmount(paymentData.getAmount());
-		payment.setCurrency(paymentData.getCurrency());
-		payment.setPaid(paymentData.getPaid());
 		payment.setUser(user);
-		
 		currentSession.saveOrUpdate(payment);
+	}
+
+	@Override
+	public Payment retrievePaymentById(int id) {
+		Session currentSession = sessionFactory.getCurrentSession();				
+		String queryStr = "select p from Payment p where p.id = :id";
+		TypedQuery<Payment> query = currentSession.createQuery(queryStr, Payment.class);
+		query.setMaxResults(1);
+		query.setParameter("id", id);
+		return query.getSingleResult();
+	}
+
+	@Override
+	public void deletePaymentById(int id) {
+		Payment payment = retrievePaymentById(id);
+		if (payment == null) {
+			return;
+		}
+		
+		Session currentSession = sessionFactory.getCurrentSession();
+		currentSession.delete(payment);
+	}
+
+	@Override
+	public void markPaymentById(int id) {
+		Payment payment = retrievePaymentById(id);
+		if (payment == null) {
+			return;
+		}
+		boolean paid = getValue(payment.getPaid());
+		payment.setPaid(!paid);
+
+		Session currentSession = sessionFactory.getCurrentSession();
+		currentSession.saveOrUpdate(payment);
+	}
+
+	private boolean getValue(Boolean value) {
+		if (value == null) {
+			return false;
+		}
+		return value;
 	}
 }

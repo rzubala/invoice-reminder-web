@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.zubala.rafal.entity.CustomUser;
 import com.zubala.rafal.entity.Payment;
@@ -66,6 +67,26 @@ public class PaymentReminderController {
 		}
 		paymentService.savePayment(payment, context.getCurrentUser());	
 		return "redirect:/payment/list";
+	}
+
+	@GetMapping("/updatePayment")
+	public String updatePayment(@RequestParam("paymentId") int id, Model model) {
+		Payment payment = paymentService.getPaymentById(id);
+		PaymentData paymentData = paymentService.getPaymentData(payment);
+		model.addAttribute("payment", paymentData);
+		return "payment-form";
+	}
+	
+	@GetMapping("/removePayment")
+	public String deleteCustomer(@RequestParam("paymentId") int id) {
+		paymentService.deletePaymentById(id);
+		return "redirect:/customer/list";
+	}
+
+	@GetMapping("/markPayment")
+	public String markPayment(@RequestParam("paymentId") int id) {
+		paymentService.markPaymentById(id);
+		return "redirect:/customer/list";
 	}
 
 	@InitBinder

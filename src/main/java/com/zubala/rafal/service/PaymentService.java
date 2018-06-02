@@ -10,4 +10,12 @@ public interface PaymentService {
 	List<Payment> retrievePaymentsByUser(Long userId, String filter);
 
 	void savePayment(PaymentData payment, CustomUser currentUser);
+
+	Payment getPaymentById(int id);
+
+	PaymentData getPaymentData(Payment payment);
+
+	void deletePaymentById(int id);
+
+	void markPaymentById(int id);
 }
