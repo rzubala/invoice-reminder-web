@@ -27,6 +27,7 @@ public class PaymentReminderSpringMvcDispatcherServletInitializer extends Abstra
     protected Filter[] getServletFilters() {
       CharacterEncodingFilter characterEncodingFilter = new CharacterEncodingFilter();
       characterEncodingFilter.setEncoding("UTF-8");
+      characterEncodingFilter.setForceEncoding(true);
       return new Filter[] { characterEncodingFilter};
     }
 }

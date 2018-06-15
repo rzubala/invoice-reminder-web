@@ -65,6 +65,7 @@ public class PaymentReminderController {
 			model.addAttribute("validationError", "Fields can not be empty.");
 			return "payment-form";	
 		}
+		
 		paymentService.savePayment(payment, context.getCurrentUser());	
 		return "redirect:/payment/list";
 	}

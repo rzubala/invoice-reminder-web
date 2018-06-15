@@ -44,7 +44,7 @@ public class PaymentReminderAppConfig implements WebMvcConfigurer {
 		
 		viewResolver.setPrefix("/WEB-INF/view/");
 		viewResolver.setSuffix(".jsp");
-		viewResolver.setContentType("text/html;charset=UTF-8");
+		viewResolver.setContentType("text/html; charset=UTF-8");
 		
 		return viewResolver;
 	}
@@ -71,7 +71,7 @@ public class PaymentReminderAppConfig implements WebMvcConfigurer {
 		myDataSource.setJdbcUrl(env.getProperty("jdbc.url"));
 		myDataSource.setUser(env.getProperty("jdbc.user"));
 		myDataSource.setPassword(env.getProperty("jdbc.password"));
-		
+				
 		// set connection pool props
 		myDataSource.setInitialPoolSize(getIntProperty("connection.pool.initialPoolSize"));
 		myDataSource.setMinPoolSize(getIntProperty("connection.pool.minPoolSize"));

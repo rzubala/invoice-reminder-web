@@ -43,6 +43,7 @@ public class PaymentDAOImpl implements PaymentDAO {
 	public void savePayment(Payment payment, CustomUser user) {
 		Session currentSession = sessionFactory.getCurrentSession();
 		payment.setUser(user);
+		
 		currentSession.saveOrUpdate(payment);
 	}
 
