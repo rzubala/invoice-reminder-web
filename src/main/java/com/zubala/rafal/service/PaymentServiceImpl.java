@@ -47,7 +47,7 @@ public class PaymentServiceImpl implements PaymentService {
 			return payment;
 		}
 		payment.setAmount(data.getAmount());
-		payment.setCurrency(data.getCurrency());
+		payment.setCurrency(data.getCurrency().toUpperCase());
 		payment.setDate(data.getDate());
 		payment.setDateStr(data.getDateStr());
 		payment.setDescription(data.getDescription());
