@@ -15,9 +15,16 @@ public class PaymentLoggingAspect {
 	private Logger logger = Logger.getLogger(getClass());
 	
 	@Around("execution(* com.zubala.rafal.dao.PaymentDAOImpl.savePayment(..))")
-	public void savePayment(ProceedingJoinPoint joinPoint) {
+	public Object savePayment(ProceedingJoinPoint joinPoint) throws Throwable {
 		Object[] args = joinPoint.getArgs();
 		Payment payment = (Payment) args[0];
-		logger.info("savePayment: " + payment.getId());
+		
+		long begin = System.currentTimeMillis();
+		Object result = joinPoint.proceed();
+		long end = System.currentTimeMillis();
+		long duration = end - begin;
+		logger.info("savePayment: " + payment.toString() + " duration: " + duration + " ms");
+		
+		return result;
 	}
 }

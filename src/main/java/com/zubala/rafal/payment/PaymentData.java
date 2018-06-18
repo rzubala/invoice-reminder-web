@@ -5,6 +5,8 @@ import java.util.Date;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import com.zubala.rafal.validation.PaymentAmount;
+
 public class PaymentData {
 
 	private int id;
@@ -21,6 +23,7 @@ public class PaymentData {
 	private String dateStr;
 
 	@NotNull(message="is required")
+	@PaymentAmount(message="must be positive number")
 	private Double amount;
 	
 	@NotNull(message="is required")

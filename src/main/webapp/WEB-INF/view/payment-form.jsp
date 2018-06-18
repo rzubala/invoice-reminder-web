@@ -59,15 +59,14 @@
 								
 				<div class="row">
 					<div class="col-md-6 col-sm-6 col-xs-12">
-						<form:form action="savePayment" class="form-horizontal"
-							modelAttribute="payment" method="POST">
+						<form:form action="savePayment" class="form-horizontal" modelAttribute="payment" method="POST">
 							<form:hidden path="id" />
 							    
 						    <div class="form-group">
 					        	<div class="col-xs-15">
 					            	<div>								
 										<c:if test="${validationError != null}">
-											<div class="alert alert-danger col-xs-offset-1 col-xs-10">
+											<div class="alert alert-danger col-xs-offset-1 col-xs-11" style="margin-top: 15px;">
 												${validationError}
 											</div>
 										</c:if>
@@ -112,7 +111,7 @@
 											<div class="input-group-addon">
 												<i class="fas fa-money-bill-alt" style="width:16px;"> </i>
 										</div>
-										<form:input class="form-control" path="amount" id="amount" name="amount" type="number" />
+										<form:input class="form-control" path="amount" id="amount" name="amount" type="number" step="0.01" />
 									</div>
 								</div>
 							</div>

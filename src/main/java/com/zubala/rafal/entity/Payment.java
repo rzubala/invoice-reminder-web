@@ -116,11 +116,6 @@ public class Payment {
 		this.dateStr = dateStr;
 	}
 
-	@Override
-	public String toString() {
-		return "Payment [id=" + id + ", name=" + name + ", description=" + description + ", date=" + date + "]";
-	}
-
 	public Double getAmount() {
 		return amount;
 	}
@@ -151,5 +146,11 @@ public class Payment {
 
 	public void setExternalId(Integer externalId) {
 		this.externalId = externalId;
+	}
+
+	@Override
+	public String toString() {
+		return "Payment [id=" + id + ", name=" + name + ", description=" + description + ", date=" + date + ", amount="
+				+ amount + ", currency=" + currency + ", paid=" + paid + "]";
 	}
 }
