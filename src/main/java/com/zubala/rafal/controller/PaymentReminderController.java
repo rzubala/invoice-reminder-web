@@ -65,11 +65,19 @@ public class PaymentReminderController {
 			model.addAttribute("payment", payment);
 			String errorMessage = getErrorMessage(bindingResult);
 			model.addAttribute("validationError", errorMessage);
+			markFieldError(bindingResult, model);
 			return "payment-form";	
 		}
 		
 		paymentService.savePayment(payment, context.getCurrentUser());	
 		return "redirect:/payment/list";
+	}
+
+	private void markFieldError(BindingResult bindingResult, Model model) {
+		List<FieldError> fieldErrors = bindingResult.getFieldErrors();
+		for (FieldError oe : fieldErrors) {
+			model.addAttribute(oe.getField()+"Error", true);
+		}
 	}
 
 	private String getErrorMessage(BindingResult bindingResult) {

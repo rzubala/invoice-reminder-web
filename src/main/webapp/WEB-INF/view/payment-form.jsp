@@ -79,7 +79,12 @@
 									Name <span class="asteriskField"> * </span>
 								</label>
 								<div class="col-sm-10">
-									<div class="input-group">
+									<div
+										<c:choose>
+    										<c:when test="${nameError}">class="input-group has-error"</c:when>
+    										<c:otherwise>class="input-group"</c:otherwise>
+  										</c:choose>
+									>
 										<div class="input-group-addon">
 											<i class="fas fa-edit" style="width:16px;"> </i>
 										</div>
@@ -93,7 +98,12 @@
 									Description
 								</label>
 								<div class="col-sm-10">
-									<div class="input-group">
+									<div
+										<c:choose>
+    										<c:when test="${descriptionError}">class="input-group has-error"</c:when>
+    										<c:otherwise>class="input-group"</c:otherwise>
+  										</c:choose>
+									>
 										<div class="input-group-addon">
 											<i class="fas fa-edit" style="width:16px;"> </i>
 										</div>
@@ -102,12 +112,17 @@
 								</div>
 							</div>
 						
-							<div class="form-group ">
+							<div class="form-group">
 									<label class="control-label col-sm-2 requiredField" for="amount">
 										Amount <span class="asteriskField"> * </span>
 									</label>
 									<div class="col-sm-10">
-										<div class="input-group">
+										<div
+											<c:choose>
+	    										<c:when test="${amountError}">class="input-group has-error"</c:when>
+	    										<c:otherwise>class="input-group"</c:otherwise>
+	  										</c:choose>
+										>
 											<div class="input-group-addon">
 												<i class="fas fa-money-bill-alt" style="width:16px;"> </i>
 										</div>
@@ -117,11 +132,16 @@
 							</div>
 							
 							<div class="form-group ">
-								<label class="control-label col-sm-2 requiredField" for="name">
+								<label class="control-label col-sm-2 requiredField" for="currency">
 									Currency <span class="asteriskField"> * </span>
 								</label>
 								<div class="col-sm-10">
-									<div class="input-group">
+									<div
+										<c:choose>
+    										<c:when test="${currencyError}">class="input-group has-error"</c:when>
+    										<c:otherwise>class="input-group"</c:otherwise>
+  										</c:choose>
+									>
 										<div class="input-group-addon">
 											<i class="fas fa-dollar-sign" style="width:16px;"> </i>
 										</div>
@@ -135,7 +155,12 @@
 									Date <span class="asteriskField"> * </span>
 								</label>
 								<div class="col-sm-10">
-									<div class="input-group">
+									<div
+										<c:choose>
+    										<c:when test="${dateError}">class="input-group has-error"</c:when>
+    										<c:otherwise>class="input-group"</c:otherwise>
+  										</c:choose>
+									>
 										<div class="input-group-addon">
 											<i class="fa fa-calendar" style="width:16px;"> </i>
 										</div>
