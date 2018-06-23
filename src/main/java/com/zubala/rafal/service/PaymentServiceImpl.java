@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import com.zubala.rafal.dao.PaymentDAO;
 import com.zubala.rafal.entity.CustomUser;
 import com.zubala.rafal.entity.Payment;
+import com.zubala.rafal.payment.FilterData;
 import com.zubala.rafal.payment.PaymentData;
 
 @Service
@@ -21,8 +22,8 @@ public class PaymentServiceImpl implements PaymentService {
 	
 	@Override
 	@Transactional
-	public List<Payment> retrievePaymentsByUser(Long userId, String filter) {
-		List<Payment> result = paymentDAO.retrievePaymentsByUser(userId, filter);
+	public List<Payment> retrievePaymentsByUser(Long userId, FilterData filterData) {
+		List<Payment> result = paymentDAO.retrievePaymentsByUser(userId, filterData);
 		if (result == null) {
 			return new LinkedList<>();
 		}

@@ -1,7 +1,6 @@
 package com.zubala.rafal.controller;
 
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -12,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.zubala.rafal.entity.CustomUser;
 import com.zubala.rafal.entity.Payment;
+import com.zubala.rafal.payment.FilterData;
 import com.zubala.rafal.payment.PaymentGrid;
 import com.zubala.rafal.service.ContextService;
 import com.zubala.rafal.service.PaymentService;
@@ -32,7 +32,9 @@ public class PaymentReminderGridController {
 		Object draw = request.getParameter("draw");
 		
 		CustomUser user = context.getCurrentUser();
-		List<Payment> data = paymentService.retrievePaymentsByUser(user.getId(), filter);
+		FilterData filterData = new FilterData();
+		filterData.setFilter(filter);
+		List<Payment> data = paymentService.retrievePaymentsByUser(user.getId(), filterData);
 		
 		PaymentGrid grid = new PaymentGrid();
 		grid.setData(data);

@@ -12,7 +12,42 @@ function format ( d ) {
     '</table>';
 }
 
+function filterPayments() {
+	var showPaid = $('#show_paid').is(":checked");
+	var showFrom = $('#show_from').val();
+	var params = { show_paid:showPaid, show_from: showFrom};
+	var str = jQuery.param( params );
+	console.log(str);
+	
+	if (!window.location.origin){
+	  // For IE
+		window.location.origin = window.location.protocol + "//" + (window.location.port ? ':' + window.location.port : '');      
+	}
+	var url = window.location.origin + window.location.pathname;
+	console.log(url);
+	
+	window.location.href = url + "?" + str;
+	
+}
+
 $(function() {
+	var date_input = $('input[name="show_from"]');
+	var container = $('#filters').length > 0 ? $('#filters').parent() : "body";
+	date_input.datepicker({
+		format : 'dd/mm/yyyy',
+		container : container,
+		todayHighlight : true,
+		autoclose : true,
+        showOtherMonths: true,
+        selectOtherMonths: true,
+        changeMonth: true,
+        changeYear: true,
+        orientation: "top",		
+	});
+	
+	//date_input.datepicker("setDate", new Date());	
+	//$('#show_paid').prop('checked', true);
+	
 	var baseUrl = $('#base_url').text();
 	var table = $('#payments').DataTable({
 		"order": [],
@@ -43,14 +78,20 @@ $(function() {
         var row = table.row( tr );
  
         if ( row.child.isShown() ) {
-            // This row is already open - close it
             row.child.hide();
             tr.removeClass('shown');
         }
         else {
-            // Open this row
             row.child( format(row.data()) ).show();
             tr.addClass('shown');
         }
-    } );    
+    } ); 
+   
+    $('#show_from').change(function() {
+    	filterPayments();
+    });
+    
+    $('#show_paid').change(function() {
+    	filterPayments();
+    });
 });

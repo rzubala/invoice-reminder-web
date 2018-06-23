@@ -6,6 +6,19 @@
 	background-color: #ffa292 !important;	
 }
 
+.filter-panel {
+	padding-left: 5px;
+}
+
+.table-paddings {
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.filter-label {
+    text-align: left !important;	
+}
+
 td.details-control {
     background: url('../img/details_open.png') no-repeat center center;
     cursor: pointer;

@@ -3,12 +3,14 @@ package com.zubala.rafal.controller;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -23,6 +25,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.zubala.rafal.entity.CustomUser;
 import com.zubala.rafal.entity.Payment;
+import com.zubala.rafal.payment.FilterData;
 import com.zubala.rafal.payment.PaymentData;
 import com.zubala.rafal.service.ContextService;
 import com.zubala.rafal.service.PaymentService;
@@ -38,14 +41,32 @@ public class PaymentReminderController {
 	private ContextService context;
 	
 	@GetMapping("/list")
-	public String listCustomers(Model model) {
+	public String listCustomers(@RequestParam("show_paid") Optional<Boolean> showPaid, 
+			@RequestParam("show_from") @DateTimeFormat(pattern="dd/MM/yyyy") Optional<Date> showFrom, 
+			Model model) {
 		CustomUser user = context.getCurrentUser();
 		
 		model.addAttribute("username", user.getUsername());
 		model.addAttribute("userId", user.getId());
 		
-		List<Payment> payments = paymentService.retrievePaymentsByUser(user.getId(), null);
+		FilterData filterData = new FilterData();
+		boolean isShowPaid = true;
+		if (showPaid.isPresent()) {
+			isShowPaid = showPaid.get();
+			filterData.setShowPaid(isShowPaid);
+		}
+			
+		Date showFromDate = new Date();
+		if (showFrom.isPresent()) {
+			showFromDate = showFrom.get();
+			filterData.setShowFrom(showFromDate);
+		}
+		
+		List<Payment> payments = paymentService.retrievePaymentsByUser(user.getId(), filterData);
 		model.addAttribute("payments", payments);
+		
+		model.addAttribute("showPaid", isShowPaid);
+		model.addAttribute("showFrom", dateToString(showFromDate));
 		
 		return "list-payments";
 	}
@@ -124,6 +145,14 @@ public class PaymentReminderController {
 
 	    StringTrimmerEditor stringTrimmerEditor = new StringTrimmerEditor(true);		
 		binder.registerCustomEditor(String.class, stringTrimmerEditor);
+	}
+	
+	private String dateToString(Date date) {
+		if (date == null) {
+			return null;
+		}
+	    SimpleDateFormat dateFormat = new SimpleDateFormat(dateFormat());
+	    return dateFormat.format(date);
 	}
 	
 	private String dateFormat() {
