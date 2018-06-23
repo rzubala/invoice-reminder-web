@@ -14,6 +14,8 @@ public interface PaymentService {
 
 	Payment getPaymentById(int id);
 
+	List<PaymentData> getPaymentData(List<Payment> payments);
+	
 	PaymentData getPaymentData(Payment payment);
 
 	void deletePaymentById(int id);

@@ -1,5 +1,6 @@
 package com.zubala.rafal.service;
 
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -57,9 +58,22 @@ public class PaymentServiceImpl implements PaymentService {
 		payment.setPaid(data.getPaid());
 		return payment;
 	}
+
+	@Override
+	public List<PaymentData> getPaymentData(List<Payment> payments) {
+		List<PaymentData> result = new LinkedList<>();
+		if (payments == null || payments.isEmpty()) {
+			return result;
+		}
+		for (Payment payment : payments) {
+			result.add(getPaymentData(payment));
+		}
+		return result;
+	}
 	
 	@Override
 	public PaymentData getPaymentData(Payment payment) {
+		Date now = new Date();
 		PaymentData data = new PaymentData();
 		if (payment == null) {
 			return data;
@@ -72,7 +86,21 @@ public class PaymentServiceImpl implements PaymentService {
 		data.setId(payment.getId());
 		data.setName(payment.getName());
 		data.setPaid(payment.getPaid());
+		data.setLate(getPaymentLate(payment, now));
 		return data;
+	}
+
+	private boolean getPaymentLate(Payment payment, Date now) {
+		boolean late = false;
+		Date date = payment.getDate();
+		Boolean paid = payment.getPaid();
+		if (paid != null && paid) {
+			return late;
+		}
+		if (date == null || now.after(date)) {
+			late = true;
+		}
+		return late;
 	}
 
 	@Override

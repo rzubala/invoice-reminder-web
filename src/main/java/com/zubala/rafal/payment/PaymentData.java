@@ -30,6 +30,8 @@ public class PaymentData {
 	private String currency;
 	
 	private Boolean paid;
+
+	private Boolean late;
 	
 	public PaymentData() {
 	}
@@ -96,6 +98,14 @@ public class PaymentData {
 
 	public void setPaid(Boolean paid) {
 		this.paid = paid;
+	}
+
+	public Boolean getLate() {
+		return late;
+	}
+
+	public void setLate(Boolean late) {
+		this.late = late;
 	}
 
 }

@@ -155,6 +155,13 @@
 												<c:set var = "paidTitle" scope = "session" value = "mark as paid"/>
 												<c:set var = "paidClass" scope = "session" value = "far fa-check-circle"/>
 											</c:if>
+												<c:if test="${paymentIt.late}">
+													<c:set var = "markLate" scope = "session" value = "payment-late"/>
+												</c:if>
+												<c:if test="${not paymentIt.late}">
+													<c:set var = "markLate" scope = "session" value = ""/>
+												</c:if>												
+											
 												<c:url var="editLink" value="/payment/updatePayment">
 													<c:param name="paymentId" value="${paymentIt.id}" />
 												</c:url>		
@@ -166,9 +173,9 @@
 												</c:url>		
 															
 												<td class=" details-control"></td>
-												<td>${paymentIt.name}</td>
+												<td><div class="${markLate}">${paymentIt.name}</div></td>
 												<td>${paymentIt.description}</td>
-												<td>${paymentIt.dateStr}</td>
+												<td><div class="${markLate}">${paymentIt.dateStr}</div></td>
 												<td>${paymentIt.amount}</td>
 												<td>${paymentIt.currency}</td>
 												<td>

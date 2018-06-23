@@ -59,11 +59,13 @@ public class PaymentReminderController {
 		Date showFromDate = new Date();
 		if (showFrom.isPresent()) {
 			showFromDate = showFrom.get();
-			filterData.setShowFrom(showFromDate);
 		}
+		filterData.setShowFrom(showFromDate);
 		
 		List<Payment> payments = paymentService.retrievePaymentsByUser(user.getId(), filterData);
-		model.addAttribute("payments", payments);
+		List<PaymentData> paymentData = paymentService.getPaymentData(payments);
+		
+		model.addAttribute("payments", paymentData);
 		
 		model.addAttribute("showPaid", isShowPaid);
 		model.addAttribute("showFrom", dateToString(showFromDate));
