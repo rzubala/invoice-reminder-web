@@ -85,15 +85,15 @@
 	  						
 	  						<!-- filters -->
 	  						<div class="row">
-								<div class="col-md-6 col-sm-6 col-xs-12">
+								<div class="col-md-12 col-sm-12 col-xs-12">
 	  						
-									<form class="form-horizontal filter-panel" id="filters" >
+									<form class="form-horizontal" id="filters" >
 			 						
 										<div class="form-group">							
-											<label class="control-label col-sm-2 filter-label" for="show_paid">
+											<label class="control-label col-md-2 col-sm-2 col-xs-4 filter-label" for="show_paid">
 												Show paid:
 											</label>
-											<div class="col-sm-10">
+											<div class="col-md-10 col-sm-10 col-xs-8">
 												<div class="input-group" style="margin-top: 5px;">
 													<input type="checkbox" class="form-check-input" id="show_paid" name="show_paid" 
 														<c:choose>
@@ -102,12 +102,13 @@
 													/>									
 												</div>
 											</div>
-										</div>  							
+										</div>  			
+														
 										<div class="form-group ">
-											<label class="control-label col-sm-2 filter-label" for="show_from">
+											<label class="control-label col-md-2 col-sm-2 col-xs-4 filter-label" for="show_from">
 												Show from:
 											</label>
-											<div class="col-sm-10">
+											<div class="col-md-10 col-sm-10 col-xs-8">
 												<div class="input-group">
 													<div class="input-group-addon">
 														<i class="fa fa-calendar" style="width:16px;"> </i>
@@ -126,7 +127,7 @@
 							  	</div>
 						  	</div>							
 	  						
-	  						<div class="table-paddings" style="margin-top: 10px;">
+	  						<div style="margin-top: 10px;">
 	  							<!--
 	  							TODO filtering https://datatables.net/examples/plug-ins/range_filtering.html
 	  							 -->  						
@@ -173,7 +174,7 @@
 												</c:url>		
 															
 												<td class=" details-control"></td>
-												<td><div class="${markLate}">${paymentIt.name}</div></td>
+												<td><div class="${markLate}"><a  id="icon_action" href="${editLink}" class="deco-none">${paymentIt.name}</a></div></td>
 												<td>${paymentIt.description}</td>
 												<td><div class="${markLate}">${paymentIt.dateStr}</div></td>
 												<td>${paymentIt.amount}</td>

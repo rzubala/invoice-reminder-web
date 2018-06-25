@@ -2,12 +2,16 @@ function format ( d ) {
     // `d` is the original data object for the row
     return '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">'+
         '<tr>'+
-            '<td>Name:</td>'+
-            '<td>'+d[1]+'</td>'+
-        '</tr>'+
-        '<tr>'+
-            '<td>Description:</td>'+
+            '<td>Description: </td>'+
             '<td>'+d[2]+'</td>'+
+        '</tr>'+
+        '<tr>' +
+            '<td>Date: </td>'+
+            '<td>'+d[3]+'</td>'+
+        '</tr>'+
+        '<tr>' +
+            '<td>Currency: </td>'+
+            '<td>'+d[5]+'</td>'+
         '</tr>'+
     '</table>';
 }
@@ -51,7 +55,10 @@ $(function() {
 	var baseUrl = $('#base_url').text();
 	var table = $('#payments').DataTable({
 		"order": [],
-		"columnDefs": [{ "targets": [0], "searchable": false, "orderable": false, "visible": true }]
+		"columnDefs": [
+			{ "targets": [0], "searchable": false, "orderable": false, "visible": true },
+			{ "width": "60px", "targets": 0 }
+		]
 	
 	/*{
         "processing": true,
@@ -70,8 +77,18 @@ $(function() {
    
 	//temporary hide column
     var column = table.column(0);
-    column.visible(!column.visible());
-	
+
+    var detailColumn = false;
+    var width = $(window).width();
+    if (width < 500) {
+    	detailColumn = true;
+    }
+    column.visible(detailColumn);
+    
+    table.column(2).visible(!detailColumn);
+    table.column(3).visible(!detailColumn);
+    table.column(5).visible(!detailColumn);
+    
     // Add event listener for opening and closing details
     $('#payments').on('click', 'td.details-control', function () {
         var tr = $(this).closest('tr');
