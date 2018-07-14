@@ -7,6 +7,7 @@ import java.util.Optional;
 
 import javax.validation.Valid;
 
+import org.jboss.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
@@ -40,6 +41,8 @@ public class PaymentReminderController {
 	@Autowired
 	private ContextService context;
 
+	private Logger logger = Logger.getLogger(getClass());
+
 	@GetMapping("/list")
 	public String listCustomers(@RequestParam("show_paid") Optional<Boolean> showPaid, 
 			@RequestParam("show_from") @DateTimeFormat(pattern="dd/MM/yyyy") Optional<Date> showFrom, 
@@ -69,6 +72,8 @@ public class PaymentReminderController {
 		
 		model.addAttribute("showPaid", isShowPaid);
 		model.addAttribute("showFrom", dateToString(showFromDate));
+	
+		logger.info("listCustomers for " + user.getUsername());
 		
 		return "list-payments";
 	}
