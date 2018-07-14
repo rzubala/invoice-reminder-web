@@ -17,6 +17,8 @@ import org.springframework.core.env.Environment;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
+import org.springframework.scheduling.annotation.EnableAsync;
+import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
@@ -30,6 +32,8 @@ import com.mchange.v2.c3p0.ComboPooledDataSource;
 @EnableWebMvc
 @EnableAspectJAutoProxy
 @EnableTransactionManagement
+@EnableScheduling
+@EnableAsync
 @ComponentScan("com.zubala.rafal")
 @PropertySource({ "classpath:persistence-mysql.properties", "classpath:mail.properties"})
 public class PaymentReminderAppConfig implements WebMvcConfigurer {
