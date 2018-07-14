@@ -14,7 +14,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
-import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
@@ -110,13 +109,11 @@ public class PaymentReminderAppConfig implements WebMvcConfigurer {
 	}	
 
 	@Bean
-	public JavaMailSender getJavaMailSender() {
+	public JavaMailSenderImpl getJavaMailSender() {
 		JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
 		mailSender.setHost(env.getProperty("spring.mail.host"));
 		mailSender.setPort(getIntProperty("spring.mail.port"));
-		mailSender.setUsername(env.getProperty("spring.mail.username"));
-		mailSender.setPassword(env.getProperty("spring.mail.password"));
-
+	
 		Properties props = mailSender.getJavaMailProperties();
 		props.put("mail.transport.protocol", "smtp");
 		props.put("mail.smtp.auth", env.getProperty("spring.mail.properties.mail.smtp.auth"));
@@ -131,7 +128,7 @@ public class PaymentReminderAppConfig implements WebMvcConfigurer {
 	@Bean
 	public LocalSessionFactoryBean sessionFactory(){
 		
-		// create session factorys
+		// create session factories
 		LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
 		
 		// set the properties
