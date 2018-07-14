@@ -56,15 +56,21 @@ public class PaymentDAOImpl implements PaymentDAO {
 	}
 
 	@Override
-	public List<Payment> retrievePaymentsByDate(Date date) {
+	public List<Payment> retrievePaymentsByDate(Date date, Boolean paid) {
 		String queryStr = "select p from Payment p "
 				+ " inner join fetch p.user User "				
-				+ " where p.date = :date";		
+				+ " where p.date = :date";	
+		if (paid != null) {
+			queryStr += " and p.paid = :paid";
+		}
 		queryStr += " order by User.id ASC ";
 	
 		Session currentSession = sessionFactory.getCurrentSession();				
 		TypedQuery<Payment> query = currentSession.createQuery(queryStr, Payment.class);
 		query.setParameter("date", date);
+		if (paid != null) {
+			query.setParameter("paid", paid);
+		}
 		
 		return query.getResultList();
 	}

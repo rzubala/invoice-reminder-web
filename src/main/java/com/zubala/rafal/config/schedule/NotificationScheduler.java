@@ -37,7 +37,7 @@ public class NotificationScheduler {
     	notificationDate = Utility.resetTimePart(notificationDate);
     	logger.info("sendPaymentNotifications: " + dateFormat.format(notificationDate));
     	
-    	List<Payment> payments = paymentService.retrievePaymentsByDate(notificationDate);
+    	List<Payment> payments = paymentService.retrievePaymentsByDate(notificationDate, false);
     	processPayments(payments);
     }
 

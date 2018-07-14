@@ -11,7 +11,7 @@ public interface PaymentDAO {
 
 	List<Payment> retrievePaymentsByUser(Long userId, FilterData filterData);
 
-	List<Payment> retrievePaymentsByDate(Date date);
+	List<Payment> retrievePaymentsByDate(Date date, Boolean paid);
 
 	void savePayment(Payment payment, CustomUser currentUser);
 

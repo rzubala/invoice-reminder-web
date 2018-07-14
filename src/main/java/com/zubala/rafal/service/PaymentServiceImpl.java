@@ -33,8 +33,8 @@ public class PaymentServiceImpl implements PaymentService {
 
 	@Override
 	@Transactional
-	public List<Payment> retrievePaymentsByDate(Date date) {
-		List<Payment> result = paymentDAO.retrievePaymentsByDate(date);
+	public List<Payment> retrievePaymentsByDate(Date date, Boolean paid) {
+		List<Payment> result = paymentDAO.retrievePaymentsByDate(date, paid);
 		if (result == null) {
 			return new LinkedList<>();
 		}

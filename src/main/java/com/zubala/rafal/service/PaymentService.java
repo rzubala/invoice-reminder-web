@@ -13,7 +13,7 @@ public interface PaymentService {
 	
 	List<Payment> retrievePaymentsByUser(Long userId, FilterData filterData);
 
-	List<Payment> retrievePaymentsByDate(Date date);
+	List<Payment> retrievePaymentsByDate(Date date, Boolean paid);
 
 	void savePayment(PaymentData payment, CustomUser currentUser);
 
