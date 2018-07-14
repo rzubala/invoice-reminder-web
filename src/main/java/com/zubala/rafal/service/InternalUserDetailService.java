@@ -21,6 +21,8 @@ import com.zubala.rafal.entity.UserRole;
 @Transactional
 public class InternalUserDetailService implements UserDetailsService {
 
+	public final static String DEMO_LOGIN = "demo"; 
+	
 	@Autowired
 	private UserDAO userRepository;
 

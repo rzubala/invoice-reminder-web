@@ -62,7 +62,7 @@
 				</div>
 			</div>	
 		
-			<security:authorize access="hasAnyRole('USER')">
+			<security:authorize access="hasAnyRole('USER', 'DEMO')">
 				<div class="row" style="margin-top: 15px;">
 					<div class="col-md-12 col-xs-12 col-s-12">	
 						<div class="panel panel-info">

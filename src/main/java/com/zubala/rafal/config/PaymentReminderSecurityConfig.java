@@ -30,8 +30,8 @@ public class PaymentReminderSecurityConfig extends WebSecurityConfigurerAdapter 
         http.addFilterBefore(filter, CsrfFilter.class);
 		
 		http.authorizeRequests()
-			.antMatchers("/payment/**").hasRole("USER")
-			.antMatchers("/grid/**").hasRole("USER")
+			.antMatchers("/payment/**").hasAnyRole("USER", "DEMO")
+			.antMatchers("/grid/**").hasAnyRole("USER", "DEMO")
 			.antMatchers("/resources/**").permitAll()
 			.and()
 			.formLogin()

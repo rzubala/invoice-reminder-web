@@ -84,6 +84,12 @@ public class PaymentReminderController {
 
 	@PostMapping("/savePayment")
 	public String savePayment(@Valid @ModelAttribute("payment") PaymentData payment, BindingResult bindingResult, Model model) {	
+		String error = paymentService.validatePayment(payment, context.getCurrentUser());
+		if (error != null) {
+			model.addAttribute("payment", payment);
+			model.addAttribute("validationError", error);
+			return "payment-form";	
+		}
 		if (bindingResult.hasErrors()) {
 			model.addAttribute("payment", payment);
 			String errorMessage = getErrorMessage(bindingResult);

@@ -49,6 +49,23 @@ public class PaymentServiceImpl implements PaymentService {
 
 	@Override
 	@Transactional
+	public String validatePayment(PaymentData payment, CustomUser currentUser) {
+		String userLogin = currentUser.getUsername();
+		if (!InternalUserDetailService.DEMO_LOGIN.equals(userLogin)) {
+			return null;
+		}
+		List<Payment> payments = retrievePaymentsByUser(currentUser.getId(), new FilterData());
+		if (payments == null || payments.isEmpty()) {
+			return null;
+		}
+		if (payments.size() >= DEMO_PAYMENTS_LIMIT) {
+			return "Demo user can define only " + DEMO_PAYMENTS_LIMIT + " payments";
+		}
+		return null;
+	}
+
+	@Override
+	@Transactional
 	public Payment getPaymentById(int id) {
 		return paymentDAO.retrievePaymentById(id);
 	}

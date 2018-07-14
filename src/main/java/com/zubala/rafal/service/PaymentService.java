@@ -9,9 +9,15 @@ import com.zubala.rafal.payment.FilterData;
 import com.zubala.rafal.payment.PaymentData;
 
 public interface PaymentService {
+	public static final int DEMO_PAYMENTS_LIMIT = 25; 
+	
 	List<Payment> retrievePaymentsByUser(Long userId, FilterData filterData);
 
+	List<Payment> retrievePaymentsByDate(Date date);
+
 	void savePayment(PaymentData payment, CustomUser currentUser);
+
+	String validatePayment(PaymentData payment, CustomUser currentUser);
 
 	Payment getPaymentById(int id);
 
@@ -22,6 +28,4 @@ public interface PaymentService {
 	void deletePaymentById(int id);
 
 	void markPaymentById(int id);
-
-	List<Payment> retrievePaymentsByDate(Date date);
 }
