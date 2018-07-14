@@ -1,5 +1,6 @@
 package com.zubala.rafal.service;
 
+import java.util.Date;
 import java.util.List;
 
 import com.zubala.rafal.entity.CustomUser;
@@ -21,4 +22,6 @@ public interface PaymentService {
 	void deletePaymentById(int id);
 
 	void markPaymentById(int id);
+
+	List<Payment> retrievePaymentsByDate(Date date);
 }

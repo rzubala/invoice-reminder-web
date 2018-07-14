@@ -19,6 +19,7 @@ public class CustomUser {
     private String username;
     private String password;
     private Boolean enabled; 
+    private String email;
    
 	@OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
 	private List<UserRole> roles;
@@ -64,5 +65,13 @@ public class CustomUser {
 
 	public void setRoles(List<UserRole> roles) {
 		this.roles = roles;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 }

@@ -1,5 +1,6 @@
 package com.zubala.rafal.dao;
 
+import java.util.Date;
 import java.util.List;
 
 import com.zubala.rafal.entity.CustomUser;
@@ -9,6 +10,8 @@ import com.zubala.rafal.payment.FilterData;
 public interface PaymentDAO {
 
 	List<Payment> retrievePaymentsByUser(Long userId, FilterData filterData);
+
+	List<Payment> retrievePaymentsByDate(Date date);
 
 	void savePayment(Payment payment, CustomUser currentUser);
 
