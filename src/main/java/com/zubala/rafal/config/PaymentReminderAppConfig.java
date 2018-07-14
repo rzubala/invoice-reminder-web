@@ -14,6 +14,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
@@ -27,10 +29,10 @@ import com.mchange.v2.c3p0.ComboPooledDataSource;
 
 @Configuration
 @EnableWebMvc
-//@EnableAspectJAutoProxy
+@EnableAspectJAutoProxy
 @EnableTransactionManagement
 @ComponentScan("com.zubala.rafal")
-@PropertySource({ "classpath:persistence-mysql.properties"})
+@PropertySource({ "classpath:persistence-mysql.properties", "classpath:mail.properties"})
 public class PaymentReminderAppConfig implements WebMvcConfigurer {
 
 	@Autowired
@@ -106,6 +108,25 @@ public class PaymentReminderAppConfig implements WebMvcConfigurer {
 		
 		return intPropVal;
 	}	
+
+	@Bean
+	public JavaMailSender getJavaMailSender() {
+		JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
+		mailSender.setHost(env.getProperty("spring.mail.host"));
+		mailSender.setPort(getIntProperty("spring.mail.port"));
+		mailSender.setUsername(env.getProperty("spring.mail.username"));
+		mailSender.setPassword(env.getProperty("spring.mail.password"));
+
+		Properties props = mailSender.getJavaMailProperties();
+		props.put("mail.transport.protocol", "smtp");
+		props.put("mail.smtp.auth", env.getProperty("spring.mail.properties.mail.smtp.auth"));
+		props.put("mail.smtp.starttls.enable", env.getProperty("spring.mail.properties.mail.smtp.starttls.enable"));
+		props.put("mail.debug", "true");
+
+		logger.info("mail: " + env.getProperty("spring.mail.username") + ":" + env.getProperty("spring.mail.host"));
+
+		return mailSender;
+	}
 	
 	@Bean
 	public LocalSessionFactoryBean sessionFactory(){

@@ -137,7 +137,19 @@
 		    <artifactId>aspectjweaver</artifactId>
 		    <version>1.8.13</version>
 		</dependency>
-				
+
+		<dependency>
+		    <groupId>javax.mail</groupId>
+		    <artifactId>mail</artifactId>
+		    <version>1.4</version>
+		</dependency>
+	
+		 <dependency>
+    		<groupId>org.springframework</groupId>
+    		<artifactId>spring-context-support</artifactId>
+    		<version>3.2.0.RELEASE</version>
+		</dependency>
+		 		
 	</dependencies>
 
 	<!-- Add support for Maven WAR Plugin -->

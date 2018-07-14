@@ -28,6 +28,7 @@ import com.zubala.rafal.entity.Payment;
 import com.zubala.rafal.payment.FilterData;
 import com.zubala.rafal.payment.PaymentData;
 import com.zubala.rafal.service.ContextService;
+import com.zubala.rafal.service.NotificationService;
 import com.zubala.rafal.service.PaymentService;
 
 @Controller
@@ -39,6 +40,9 @@ public class PaymentReminderController {
 
 	@Autowired
 	private ContextService context;
+
+	@Autowired
+	private NotificationService notificationService;
 	
 	@GetMapping("/list")
 	public String listCustomers(@RequestParam("show_paid") Optional<Boolean> showPaid, 
@@ -91,6 +95,8 @@ public class PaymentReminderController {
 			markFieldError(bindingResult, model);
 			return "payment-form";	
 		}
+	
+		notificationService.sendSimpleMessage("rzubala@wp.pl", "Payment: " + payment.getName(), "To pay: " + payment.getAmount() + " " + payment.getCurrency() + " to " + payment.getDate());
 		
 		paymentService.savePayment(payment, context.getCurrentUser());	
 		return "redirect:/payment/list";
