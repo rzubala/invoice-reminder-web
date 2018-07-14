@@ -22,6 +22,7 @@ public class NotificationServiceImpl implements NotificationService {
 		message.setTo(to);
 		message.setSubject(subject);
 		message.setText(text);
+		message.setFrom("notify@zubala.com");
 		
 		SettingsMail settings = settingsService.getSettingsMail();
 		if (settings != null) {

@@ -96,7 +96,8 @@ public class PaymentReminderController {
 			return "payment-form";	
 		}
 	
-		notificationService.sendSimpleMessage("rzubala@wp.pl", "Payment: " + payment.getName(), "To pay: " + payment.getAmount() + " " + payment.getCurrency() + " to " + payment.getDate());
+		//FIXME
+		//notificationService.sendSimpleMessage("rzubala@wp.pl", "Payment: " + payment.getName(), "To pay: " + payment.getAmount() + " " + payment.getCurrency() + " to " + payment.getDate());
 		
 		paymentService.savePayment(payment, context.getCurrentUser());	
 		return "redirect:/payment/list";
